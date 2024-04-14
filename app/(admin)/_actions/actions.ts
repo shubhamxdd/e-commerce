@@ -38,4 +38,23 @@ export const getUserData = async () => {
     throw new Error("Error fetching user data");
   }
 };
-export const getYData = async () => {};
+export const getProductsData = async () => {
+  try {
+    const totalProducts = await prisma.product.count();
+    const availableProducts = await prisma.product.count({
+      where: { isAvailable: true },
+    });
+    const unavailableProducts = await prisma.product.count({
+      where: { isAvailable: false },
+    });
+
+    return {
+      totalProducts: totalProducts || 0,
+      availableProducts: availableProducts || 0,
+      unavailableProducts: unavailableProducts || 0,
+    };
+  } catch (error) {
+    console.log("Error fetching products data", error);
+    throw new Error("Error fetching products data");
+  }
+};
