@@ -23,7 +23,7 @@ const AdminMobileNav = () => {
           <p className="px-4">LogoHere</p>
           <Separator className="border border-gray-200" />
           {adminNavLinks.map((link) => (
-            <NavItem key={link.name} href="/admin" name={link.name} />
+            <NavItem key={link.name} href={link.href} name={link.name} />
           ))}
           <li className="list-none px-3">
             <ModeToggle />

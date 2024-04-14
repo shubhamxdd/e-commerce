@@ -11,7 +11,11 @@ interface NavItemProps {
 const NavItem = ({ href, name }: NavItemProps) => {
   const pathname = usePathname();
   return (
-    <li className={`list-none capitalize ${pathname === href ? "" : ""}`}>
+    <li
+      className={`list-none capitalize ${
+        pathname === href ? "border-b rounded-lg border-slate-400  " : ""
+      }`}
+    >
       <Button asChild variant={"ghost"}>
         <Link href={href}>{name}</Link>
       </Button>
