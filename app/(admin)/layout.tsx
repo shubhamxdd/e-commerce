@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import AdminHeader from "./_components/AdminHeader";
 
 export default function RootLayout({
@@ -12,3 +13,13 @@ export default function RootLayout({
     </>
   );
 }
+
+export const dynamic = "force-dynamic";
+
+export const metadata: Metadata = {
+  title: {
+    template: "%s | Admin",
+    default: "Admin",
+  },
+  description: "Admin dashboard",
+};
