@@ -38,6 +38,7 @@ export const getUserData = async () => {
     throw new Error("Error fetching user data");
   }
 };
+
 export const getProductsData = async () => {
   try {
     const totalProducts = await prisma.product.count();
