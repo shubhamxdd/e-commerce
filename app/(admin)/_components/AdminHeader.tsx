@@ -25,7 +25,7 @@ export const adminNavLinks = [
 const AdminHeader = () => {
   return (
     // todo blur effect here
-    <div className="w-full bg-slate-900 text-white p-2 flex items-center justify-between md:px-20 px-6">
+    <div className="w-full bg-slate-900 text-white p-2 flex items-center justify-between md:px-20 px-6 lg:px-40">
       <h1 className="text-[18px] md:text-[20px] font-semibold">
         <Link href={"/admin"}>LogoHere</Link>
       </h1>

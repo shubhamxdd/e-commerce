@@ -8,7 +8,7 @@ export default function RootLayout({
   return (
     <>
       <AdminHeader />
-      <div className="md:px-20 px-6">{children}</div>
+      <div className="md:px-20 lg:px-40 px-6">{children}</div>
     </>
   );
 }

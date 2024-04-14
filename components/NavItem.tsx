@@ -13,7 +13,9 @@ const NavItem = ({ href, name }: NavItemProps) => {
   return (
     <li
       className={`list-none capitalize ${
-        pathname === href ? "border-b rounded-lg border-slate-400  " : ""
+        pathname === href
+          ? "md:border-b md:rounded-lg md:border-slate-400 md:bg-white/10"
+          : ""
       }`}
     >
       <Button asChild variant={"ghost"}>
