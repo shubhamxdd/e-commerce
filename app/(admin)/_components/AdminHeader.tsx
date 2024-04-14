@@ -26,7 +26,7 @@ const AdminHeader = () => {
   return (
     // todo blur effect here
     <div className="w-full bg-slate-900 text-white p-2 flex items-center justify-between md:px-20 px-6 lg:px-40">
-      <h1 className="text-[18px] md:text-[20px] font-semibold">
+      <h1 className="text-[20px] md:text-[22px] font-semibold">
         <Link href={"/admin"}>LogoHere</Link>
       </h1>
       <ul className="md:flex gap-2 hidden">

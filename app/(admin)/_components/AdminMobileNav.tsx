@@ -20,7 +20,7 @@ const AdminMobileNav = () => {
           <TbMenuDeep size={28} className="bg-slate-900" />
         </SheetTrigger>
         <SheetContent className="flex flex-col gap-3 md:hidden">
-          <p className="px-4">LogoHere</p>
+          <p className="px-4 text-[20px] md:text-[22px] font-bold">LogoHere</p>
           <Separator className="border border-gray-200" />
           {adminNavLinks.map((link) => (
             <NavItem key={link.name} href={link.href} name={link.name} />
