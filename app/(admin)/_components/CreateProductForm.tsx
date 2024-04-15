@@ -12,9 +12,10 @@ import { useState } from "react";
 import Image from "next/image";
 
 const CreateProductForm = () => {
+  const { pending } = useFormStatus();
   const [res, setRes] = useState<any>(null);
   return (
-    <form className="space-y-8" action={formAction}>
+    <form className="space-y-8 mb-20" action={formAction}>
       <div className="flex flex-col gap-3">
         <Label htmlFor="name">Product Name</Label>
         <Input name="name" id="name" type="text" required />
@@ -85,22 +86,15 @@ const CreateProductForm = () => {
 
         {/* img */}
       </div>
-      <SubmitBtn />
+      <Button type="submit" disabled={pending}>
+        {pending ? (
+          <AiOutlineLoading3Quarters className={`animate-spin`} size={30} />
+        ) : (
+          "Submit"
+        )}
+      </Button>
     </form>
   );
 };
 
 export default CreateProductForm;
-
-const SubmitBtn = () => {
-  const { pending } = useFormStatus();
-  return (
-    <Button type="submit" disabled={pending}>
-      {pending ? (
-        <AiOutlineLoading3Quarters className={`animate-spin`} size={30} />
-      ) : (
-        "Submit"
-      )}
-    </Button>
-  );
-};
