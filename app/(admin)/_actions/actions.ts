@@ -1,8 +1,7 @@
 "use server";
 import prisma from "@/prisma/prisma";
-import { z } from "zod";
-import fs from "fs/promises";
 import { redirect } from "next/navigation";
+import { z } from "zod";
 
 export const getSalesData = async () => {
   try {
@@ -64,38 +63,35 @@ export const getProductsData = async () => {
   }
 };
 
-const fileSchema = z
-  .instanceof(File, { message: "Invalid file" })
-  .refine((file) => file.size === 0 || file.type.startsWith("image/"));
-
 const productSchema = z.object({
   name: z.string().min(1),
   price: z.coerce.number().min(0),
   description: z.string().min(1),
-  image: fileSchema.refine((file) => file.size > 0, "Required"),
+  image: z.string(),
 });
 
 export const formAction = async (formData: FormData) => {
+  // add some dalay for testing here
+  // async function delay(num: number) {
+  //   return new Promise((resolve) => {
+  //     setTimeout(resolve, num);
+  //   });
+  // }
+
+  // delay(5000);
+
   let res = productSchema.safeParse(Object.fromEntries(formData.entries()));
   if (!res.success) {
     return res.error.formErrors.fieldErrors;
   }
-
   const data = res.data;
 
-  await fs.mkdir("public/products", { recursive: true });
-  const imagePath = `/products/${crypto.randomUUID()}-${data.image.name}`;
-  await fs.writeFile(
-    `public${imagePath}`,
-    Buffer.from(await data.image.arrayBuffer())
-  );
-
-  prisma.product.create({
+  await prisma.product.create({
     data: {
       name: data.name,
       price: data.price,
       description: data.description,
-      image: imagePath,
+      image: data.image,
     },
   });
 
