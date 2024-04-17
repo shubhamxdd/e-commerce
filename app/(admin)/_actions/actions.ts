@@ -64,13 +64,16 @@ export const getProductsData = async () => {
 };
 
 const productSchema = z.object({
-  name: z.string().min(1),
-  price: z.coerce.number().min(0),
-  description: z.string().min(1),
-  image: z.string(),
+  name: z.string().min(2),
+  price: z.coerce.number().min(1),
+  description: z.string().min(2),
+  image: z.string().url(),
 });
 
-export const formAction = async (formData: FormData) => {
+export const createProduct = async (
+  previousState: unknown,
+  formData: FormData
+) => {
   // add some dalay for testing here
   // async function delay(num: number) {
   //   return new Promise((resolve) => {
@@ -81,6 +84,7 @@ export const formAction = async (formData: FormData) => {
   // delay(5000);
 
   let res = productSchema.safeParse(Object.fromEntries(formData.entries()));
+  // console.log(res)
   if (!res.success) {
     return res.error.formErrors.fieldErrors;
   }

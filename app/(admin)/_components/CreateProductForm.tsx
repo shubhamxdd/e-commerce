@@ -3,8 +3,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { formAction } from "../_actions/actions";
-import { useFormStatus } from "react-dom";
+import { createProduct } from "../_actions/actions";
+import { useFormState, useFormStatus } from "react-dom";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { CldUploadWidget } from "next-cloudinary";
 import { TbPhotoPlus } from "react-icons/tb";
@@ -12,21 +12,26 @@ import { useState } from "react";
 import Image from "next/image";
 
 const CreateProductForm = () => {
-  const { pending } = useFormStatus();
+  const [error, action] = useFormState(createProduct, {});
   const [res, setRes] = useState<any>(null);
   return (
-    <form className="space-y-8 mb-20" action={formAction}>
+    <form className="space-y-8 mb-20" action={action}>
       <div className="flex flex-col gap-3">
         <Label htmlFor="name">Product Name</Label>
         <Input name="name" id="name" type="text" required />
+        {error?.name && <p className="text-red-500">{error?.name}</p>}
       </div>
       <div className="flex flex-col gap-3">
         <Label htmlFor="price">Product Price</Label>
         <Input name="price" id="price" type="number" required />
+        {error?.price && <p className="text-red-500">{error?.price}</p>}
       </div>
       <div className="flex flex-col gap-3">
         <Label htmlFor="description">Product Description</Label>
         <Textarea name="description" id="description" required />
+        {error?.description && (
+          <p className="text-red-500">{error?.description}</p>
+        )}
       </div>
       <div className="flex flex-col gap-3">
         <Label htmlFor="image" className="hidden">
@@ -38,13 +43,13 @@ const CreateProductForm = () => {
           id="image"
           className="hidden"
           value={res?.url}
-          required
         />
 
         {/* img */}
 
         <CldUploadWidget
           uploadPreset="hwpdcpzp"
+          // TODO
           options={{ maxFiles: 1 }}
           onSuccess={(result, { widget }) => {
             console.log(result);
@@ -83,18 +88,26 @@ const CreateProductForm = () => {
             );
           }}
         </CldUploadWidget>
+        {error?.image && <p className="text-red-500">Image is required!</p>}
 
         {/* img */}
       </div>
-      <Button type="submit" disabled={pending}>
-        {pending ? (
-          <AiOutlineLoading3Quarters className={`animate-spin`} size={30} />
-        ) : (
-          "Submit"
-        )}
-      </Button>
+      <SubmitBtn />
     </form>
   );
 };
 
 export default CreateProductForm;
+
+const SubmitBtn = () => {
+  const { pending } = useFormStatus();
+  return (
+    <Button type="submit" disabled={pending}>
+      {pending ? (
+        <AiOutlineLoading3Quarters className={`animate-spin`} size={28} />
+      ) : (
+        "Submit"
+      )}
+    </Button>
+  );
+};
