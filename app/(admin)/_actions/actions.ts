@@ -1,6 +1,6 @@
 "use server";
 import prisma from "@/prisma/prisma";
-import { redirect } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { z } from "zod";
 
 export const getSalesData = async () => {
@@ -102,4 +102,52 @@ export const createProduct = async (
   redirect("/admin/products");
 
   // console.log(formData);
+};
+
+export const getProducts = async () => {
+  try {
+    const products = await prisma.product.findMany({
+      select: {
+        id: true,
+        name: true,
+        price: true,
+        isAvailable: true,
+        _count: { select: { Order: true } },
+      },
+      orderBy: {
+        name: "asc",
+      },
+    });
+    // console.log(products);
+    return products;
+  } catch (error) {
+    console.log(error);
+    throw new Error("Error fetching products");
+  }
+};
+
+export const changeAvailability = async (id: string, isAvailable: boolean) => {
+  try {
+    await prisma.product.update({
+      where: { id },
+      data: {
+        isAvailable,
+      },
+    });
+  } catch (error) {
+    console.log(error);
+    throw new Error("Error changing availability");
+  }
+};
+export const deleteProduct = async (id: string) => {
+  try {
+    const product = await prisma.product.delete({
+      where: { id },
+    });
+
+    if (!product) return notFound();
+  } catch (error) {
+    console.log(error);
+    throw new Error("Error changing availability");
+  }
 };
