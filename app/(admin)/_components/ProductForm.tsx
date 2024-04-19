@@ -101,11 +101,15 @@ const ProductForm = ({ product }: ProductFormProps) => {
               <>
                 <div onClick={handleOnClick}>
                   <div className="font-semibold text-lg flex items-center">
-                    <Button className="flex  mb-8" variant={"outline"}>
+                    <Button
+                      className="flex  mb-8"
+                      variant={"outline"}
+                      type="button"
+                    >
                       <TbPhotoPlus size={20} className="mr-2" /> Click to upload
                     </Button>
                   </div>
-                  {res && (
+                  {res ? (
                     <div className="p-2 flex items-center justify-center">
                       <Image
                         src={res.url}
@@ -116,11 +120,10 @@ const ProductForm = ({ product }: ProductFormProps) => {
                         style={{ objectFit: "cover" }}
                       />
                     </div>
-                  )}
-                  {product?.image && (
+                  ) : (
                     <div className="p-2 flex items-center justify-center">
                       <Image
-                        src={product.image}
+                        src={product?.image}
                         alt="prod image"
                         width={400}
                         height={200}
