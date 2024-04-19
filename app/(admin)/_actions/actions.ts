@@ -19,7 +19,6 @@ export const getSalesData = async () => {
     throw new Error("Error fetching sales data");
   }
 };
-
 export const getUserData = async () => {
   try {
     const userCount = await prisma.user.count();
@@ -41,7 +40,6 @@ export const getUserData = async () => {
     throw new Error("Error fetching user data");
   }
 };
-
 export const getProductsData = async () => {
   try {
     const totalProducts = await prisma.product.count();
@@ -62,14 +60,12 @@ export const getProductsData = async () => {
     throw new Error("Error fetching products data");
   }
 };
-
 const productSchema = z.object({
   name: z.string().min(2),
   price: z.coerce.number().min(1),
   description: z.string().min(2),
   image: z.string().url(),
 });
-
 export const createProduct = async (
   previousState: unknown,
   formData: FormData
@@ -103,7 +99,6 @@ export const createProduct = async (
 
   // console.log(formData);
 };
-
 export const getProducts = async () => {
   try {
     const products = await prisma.product.findMany({
@@ -125,7 +120,6 @@ export const getProducts = async () => {
     throw new Error("Error fetching products");
   }
 };
-
 export const changeAvailability = async (id: string, isAvailable: boolean) => {
   try {
     await prisma.product.update({
@@ -150,4 +144,67 @@ export const deleteProduct = async (id: string) => {
     console.log(error);
     throw new Error("Error changing availability");
   }
+};
+
+export const getProductById = async (id: string) => {
+  try {
+    if (!id) return notFound();
+    const product = await prisma.product.findUnique({
+      where: { id },
+    });
+    if (!product) return notFound();
+    return product;
+  } catch (error) {
+    console.log(error);
+    throw new Error("Error fetching product");
+  }
+};
+
+const editSchema = z.object({
+  name: z.string().min(2),
+  price: z.coerce.number().min(1),
+  description: z.string().min(2),
+  image: z.string().url(),
+});
+
+export const updateProduct = async (
+  id: string,
+  previousState: unknown,
+  formData: FormData
+) => {
+  // add some dalay for testing here
+  // async function delay(num: number) {
+  //   return new Promise((resolve) => {
+  //     setTimeout(resolve, num);
+  //   });
+  // }
+
+  // delay(5000);
+
+  let res = editSchema.safeParse(Object.fromEntries(formData.entries()));
+  // console.log(res)
+  if (!res.success) {
+    return res.error.formErrors.fieldErrors;
+  }
+  const data = res.data;
+
+  const product = await prisma.product.findUnique({
+    where: { id },
+  });
+
+  if (!product) return notFound();
+
+  await prisma.product.update({
+    where: { id },
+    data: {
+      name: data.name,
+      price: data.price,
+      description: data.description,
+      image: data.image,
+    },
+  });
+
+  redirect("/admin/products");
+
+  // console.log(formData);
 };
