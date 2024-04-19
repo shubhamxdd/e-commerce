@@ -2,7 +2,6 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function middleware(request: NextRequest) {
   const isAuth = await isAuthenticated(request);
-
   if (!isAuth) {
     return new NextResponse("username and password is 'admin' ", {
       status: 401,
@@ -35,5 +34,13 @@ async function isAuthenticated(request: NextRequest) {
 }
 
 export const config = {
-  matcher: "/admin/:path*",
+  matcher: [
+    {
+      source: "/admin/:path*",
+      missing: [
+        { type: "header", key: "next-router-prefetch" },
+        { type: "header", key: "purpose", value: "prefetch" },
+      ],
+    },
+  ],
 };
