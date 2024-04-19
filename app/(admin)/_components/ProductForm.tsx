@@ -123,7 +123,7 @@ const ProductForm = ({ product }: ProductFormProps) => {
                   ) : (
                     <div className="p-2 flex items-center justify-center">
                       <Image
-                        src={product?.image}
+                        src={product?.image || ""}
                         alt="prod image"
                         width={400}
                         height={200}
