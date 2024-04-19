@@ -52,7 +52,6 @@ const ProductDropdown = ({ product }: ProductDropdownProps) => {
             startTransition(async () => {
               await changeAvailability(product.id, !product.isAvailable);
             });
-            // router refresh here
             router.refresh();
           }}
         >

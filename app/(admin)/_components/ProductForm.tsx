@@ -3,37 +3,65 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { createProduct } from "../_actions/actions";
+import { createProduct, updateProduct } from "../_actions/actions";
 import { useFormState, useFormStatus } from "react-dom";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { CldUploadWidget } from "next-cloudinary";
 import { TbPhotoPlus } from "react-icons/tb";
 import { useState } from "react";
 import Image from "next/image";
+import { Product } from "@prisma/client";
 
-const CreateProductForm = () => {
-  const [error, action] = useFormState(createProduct, {});
+interface ProductFormProps {
+  product?: Product;
+}
+
+const ProductForm = ({ product }: ProductFormProps) => {
+  const [error, action] = useFormState(
+    product ? updateProduct.bind(null, product.id) : createProduct,
+    {}
+  );
+  // cloudinary image response
   const [res, setRes] = useState<any>(null);
   return (
     <form className="space-y-8 mb-20" action={action}>
       <div className="flex flex-col gap-3">
         <Label htmlFor="name">Product Name</Label>
-        <Input name="name" id="name" type="text" required />
+        <Input
+          name="name"
+          id="name"
+          type="text"
+          required
+          defaultValue={product?.name || ""}
+        />
         {error?.name && <p className="text-red-500">{error?.name}</p>}
       </div>
       <div className="flex flex-col gap-3">
         <Label htmlFor="price">Product Price</Label>
-        <Input name="price" id="price" type="number" required />
+        <Input
+          name="price"
+          id="price"
+          type="number"
+          required
+          defaultValue={product?.price || ""}
+        />
         {error?.price && <p className="text-red-500">{error?.price}</p>}
       </div>
       <div className="flex flex-col gap-3">
         <Label htmlFor="description">Product Description</Label>
-        <Textarea name="description" id="description" required />
+        <Textarea
+          name="description"
+          id="description"
+          required
+          defaultValue={product?.description || ""}
+        />
         {error?.description && (
           <p className="text-red-500">{error?.description}</p>
         )}
       </div>
       <div className="flex flex-col gap-3">
+        {/* {product?.id && (
+          <> */}
         <Label htmlFor="image" className="hidden">
           Product Image
         </Label>
@@ -43,7 +71,13 @@ const CreateProductForm = () => {
           id="image"
           className="hidden"
           value={res?.url}
+          defaultValue={product?.image || ""}
         />
+        {/* <p className="text-sm text-muted-foreground">
+              Dont edit this field
+            </p>
+          </>
+        )} */}
 
         {/* img */}
 
@@ -83,6 +117,18 @@ const CreateProductForm = () => {
                       />
                     </div>
                   )}
+                  {product?.image && (
+                    <div className="p-2 flex items-center justify-center">
+                      <Image
+                        src={product.image}
+                        alt="prod image"
+                        width={400}
+                        height={200}
+                        className=""
+                        style={{ objectFit: "cover" }}
+                      />
+                    </div>
+                  )}
                 </div>
               </>
             );
@@ -97,7 +143,7 @@ const CreateProductForm = () => {
   );
 };
 
-export default CreateProductForm;
+export default ProductForm;
 
 const SubmitBtn = () => {
   const { pending } = useFormStatus();
