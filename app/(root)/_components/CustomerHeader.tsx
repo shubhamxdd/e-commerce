@@ -13,12 +13,12 @@ export const adminNavLinks = [
     href: "/products",
   },
   {
-    name: "idk v1",
-    href: "/2",
+    name: "About",
+    href: "/",
   },
   {
-    name: "idk v2",
-    href: "/22",
+    name: "Contact Us",
+    href: "/",
   },
 ];
 const CustomerHeader = () => {

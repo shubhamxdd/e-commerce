@@ -1,5 +1,4 @@
 import NavItem from "@/components/NavItem";
-import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import AdminMobileNav from "./AdminMobileNav";
 import { ModeToggle } from "@/components/ModeToggle";
@@ -14,12 +13,12 @@ export const adminNavLinks = [
     href: "/admin/products",
   },
   {
-    name: "db",
-    href: "/admin/2",
+    name: "About us",
+    href: "/admin",
   },
   {
-    name: "xyx",
-    href: "/admin/3",
+    name: "Baigan",
+    href: "/admin",
   },
 ];
 const AdminHeader = () => {
