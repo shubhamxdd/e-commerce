@@ -39,6 +39,7 @@ const AdminDashboard = async () => {
     <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 my-4">
       {data.map((item) => (
         <AdminCard
+          key={item.title}
           title={item.title}
           description={item.description}
           content={item.content}
