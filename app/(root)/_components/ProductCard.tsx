@@ -51,13 +51,13 @@ const ProductCard = ({ product }: ProductCard) => {
         </CardDescription>
       </CardHeader>
       <CardContent className="-my-3">
-        <p className="text-[15px]">{formatCurrency(product.price)}</p>
-        <p className="line-clamp-3">
+        <p className="line-clamp-3 text-sm text-muted-foreground">
           {/* {product.description} */}
           {product.description.length > 40
             ? product.description.slice(0, 40) + "..."
             : product.description}
         </p>
+        <p className="text-[16px]">{formatCurrency(product.price)}</p>
       </CardContent>
       <CardFooter>
         <div className="flex gap-2 w-full">
