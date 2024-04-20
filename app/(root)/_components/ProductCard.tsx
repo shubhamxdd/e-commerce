@@ -73,7 +73,7 @@ const ProductCard = ({ product }: ProductCard) => {
             variant={"outline"}
             asChild
           >
-            <Link href={"/"}>
+            <Link href={`/products/${product.id}`}>
               <span>Read More</span>
               <IoArrowRedoSharp
                 size={20}
