@@ -30,7 +30,6 @@ export const getPopularProducts = async () => {
           _count: "desc",
         },
       },
-      take: 6,
     });
     if (!products) return [];
 

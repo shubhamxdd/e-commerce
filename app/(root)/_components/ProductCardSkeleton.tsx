@@ -17,7 +17,7 @@ const ProductCardSkeleton = () => {
               <Skeleton className="h-7 w-20 rounded-full" />
               <Skeleton className="h-7 w-20 rounded-full" />
             </div>
-            <Skeleton className="h-4 w-72 my-2" />
+            <Skeleton className="h-8 w-72 my-2" />
           </div>
         </div>
         <div className="my-2">
