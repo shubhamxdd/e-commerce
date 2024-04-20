@@ -12,7 +12,7 @@ import { Product } from "@prisma/client";
 import Image from "next/image";
 import Link from "next/link";
 import { IoArrowRedoSharp } from "react-icons/io5";
-import { FiShoppingCart } from "react-icons/fi";
+import { MdOutlineDoubleArrow } from "react-icons/md";
 
 interface ProductCard {
   product: Product;
@@ -52,7 +52,6 @@ const ProductCard = ({ product }: ProductCard) => {
       </CardHeader>
       <CardContent className="-my-3">
         <p className="line-clamp-3 text-sm text-muted-foreground">
-          {/* {product.description} */}
           {product.description.length > 40
             ? product.description.slice(0, 40) + "..."
             : product.description}
@@ -61,17 +60,13 @@ const ProductCard = ({ product }: ProductCard) => {
       </CardContent>
       <CardFooter>
         <div className="flex gap-2 w-full">
-          <Button className="w-full group" asChild>
-            <Link href={"/"}>
-              <span>Add to cart</span>
-              <FiShoppingCart
-                // todo fix  this
-                className="transition-all duration-300 group-hover:translate-x-2 group-focus:translate-x-2 group-focus-within:translate-x-2 mx-[2px]"
-                size={20}
-              />
-
-              {/* todo implement add to cart */}
-            </Link>
+          <Button className="w-full group">
+            <span>Buy it now</span>
+            <MdOutlineDoubleArrow
+              className="transition-all duration-300 group-hover:translate-x-2 group-focus:translate-x-2 group-focus-within:translate-x-2 mx-[2px]"
+              size={20}
+            />
+            {/* todo implement add to cart */}
           </Button>
           <Button
             className="w-full group flex flex-row items-center"
