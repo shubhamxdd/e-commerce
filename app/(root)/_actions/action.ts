@@ -52,3 +52,18 @@ export const getAllProducts = async () => {
     throw new Error("Failed to fetch all products");
   }
 };
+
+export const getThreeProducts = async () => {
+  try {
+    const products = await prisma.product.findMany({
+      where: {
+        isAvailable: true,
+      },
+      take: 3,
+    });
+    return products;
+  } catch (error) {
+    console.log(error);
+    throw new Error("Failed to fetch three products");
+  }
+};
