@@ -1,14 +1,6 @@
 import { Button } from "@/components/ui/button";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
 import { formatCurrency } from "@/lib/currencyFormatter";
 import { Product } from "@prisma/client";
-import Image from "next/image";
 import { MdOutlineDoubleArrow } from "react-icons/md";
 import { ImageComp } from "./PerProductImageInsideGrid";
 

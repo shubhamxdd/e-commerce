@@ -23,12 +23,12 @@ export const ImageComp = ({
     <>
       <div className="col-span-1 sm:col-span-5 md:col-span-5 container w-full">
         <div
-          className="hover:cursor-pointer hover:opacity-60 mb-3 transition-all duration-300"
+          className="hover:cursor-pointer hover:opacity-60 transition-all duration-300"
           onClick={() => router.back()}
         >
           <IoChevronBack size={30} />
         </div>
-        <Carousel className="top-0 sticky mx-auto my-3 mb-10 ">
+        <Carousel className="top-0 sticky mx-auto my-3 ">
           <CarouselContent>
             <CarouselItem className="relative h-screen">
               {product?.image && (
@@ -50,26 +50,6 @@ export const ImageComp = ({
                 />
               )}
             </CarouselItem>
-            {/* <CarouselItem className="relative h-screen">
-              {product?.image && (
-                <Image
-                  src={product.image}
-                  alt={product.name}
-                  fill
-                  style={{ objectFit: "cover", objectPosition: "top" }}
-                />
-              )}
-            </CarouselItem>
-            <CarouselItem className="relative h-screen">
-              {product?.image && (
-                <Image
-                  src={product.image}
-                  alt={product.name}
-                  fill
-                  style={{ objectFit: "cover", objectPosition: "bottom" }}
-                />
-              )}
-            </CarouselItem> */}
             <CarouselItem className="relative h-screen">
               {product?.image && (
                 <Image
