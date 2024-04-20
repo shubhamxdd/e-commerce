@@ -22,7 +22,7 @@ const ProductCard = ({ product }: ProductCard) => {
   return (
     <Card className="flex flex-col overflow-hidden min-h-[380px] w-full max-w-[400px] md:min-h-[438px]">
       <CardHeader>
-        <CardTitle className="text-xl font-semibold capitalize">
+        <CardTitle className="">
           <div className="relative w-full h-72">
             <Image
               src={product.image}
@@ -32,12 +32,26 @@ const ProductCard = ({ product }: ProductCard) => {
               style={{ objectFit: "cover" }}
             />
           </div>
-          <h2>{product.name}</h2>
         </CardTitle>
-        <CardDescription></CardDescription>
+        <CardDescription>
+          <div className="flex gap-2 my-2">
+            <p className="text-[14px] font-semibold rounded-full line-clamp-1 bg-purple-500/10 px-4 py-1 text-purple-700 capitalize">
+              {"Tag 1"}
+            </p>
+            <p className="text-[14px] font-semibold rounded-full line-clamp-1 bg-green-500/10 px-4 py-1 text-green-700 capitalize">
+              {"Tag 2"}
+            </p>
+            <p className="text-[14px] font-semibold rounded-full line-clamp-1 bg-sky-500/10 px-4 py-1 text-sky-700 capitalize">
+              {"Tag 3"}
+            </p>
+          </div>
+          <h2 className="my-1 text-xl font-semibold capitalize text-primary">
+            {product.name}
+          </h2>
+        </CardDescription>
       </CardHeader>
-      <CardContent>
-        <p className="text-[15px] my-2">{formatCurrency(product.price)}</p>
+      <CardContent className="-my-3">
+        <p className="text-[15px]">{formatCurrency(product.price)}</p>
         <p className="line-clamp-3">
           {/* {product.description} */}
           {product.description.length > 40

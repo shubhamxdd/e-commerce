@@ -35,11 +35,10 @@ const HomePageProducts = async ({ title, fetchFn }: HomePageProductsProps) => {
           </Link>
         </Button>
       </div>
-        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 place-items-center my-4">
-          {products.map((product) => (
-            <ProductCard product={product} key={product.id} />
-          ))}
-          {/* product card */}
+      <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 place-items-center my-4">
+        {products.map((product) => (
+          <ProductCard product={product} key={product.id} />
+        ))}
       </div>
     </div>
   );
