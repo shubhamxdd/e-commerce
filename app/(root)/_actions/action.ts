@@ -39,3 +39,16 @@ export const getPopularProducts = async () => {
     throw new Error("Failed to fetch popular products");
   }
 };
+
+export const getAllProducts = async () => {
+  try {
+    const products = await prisma.product.findMany({
+      where: { isAvailable: true },
+    });
+    if (!products) return [];
+    return products;
+  } catch (error) {
+    console.log(error);
+    throw new Error("Failed to fetch all products");
+  }
+};
