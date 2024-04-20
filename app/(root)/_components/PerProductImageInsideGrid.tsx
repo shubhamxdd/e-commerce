@@ -23,7 +23,7 @@ export const ImageComp = ({
     <>
       <div className="col-span-1 sm:col-span-5 md:col-span-5 container w-full">
         <div
-          className="hover:cursor-pointer hover:opacity-60 transition-all duration-300"
+          className="hover:cursor-pointer hover:opacity-60 transition-all duration-300 -mx-2"
           onClick={() => router.back()}
         >
           <IoChevronBack size={30} />
