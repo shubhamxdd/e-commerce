@@ -6,7 +6,14 @@ import HomePageSkeleton from "./_components/HomePageSkeleton";
 
 const RootPage = () => {
   return (
-    <Suspense fallback={<HomePageSkeleton />}>
+    <Suspense
+      fallback={
+        <>
+          <HomePageSkeleton />
+          <HomePageSkeleton />
+        </>
+      }
+    >
       <div className="space-y-12">
         <HomePageProducts
           title="Most Popular 🔥"
