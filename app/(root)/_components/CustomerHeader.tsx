@@ -2,6 +2,7 @@ import NavItem from "@/components/NavItem";
 import Link from "next/link";
 import { ModeToggle } from "@/components/ModeToggle";
 import CustomerMobileNav from "./CustomerMobileNav";
+import CustomerNavLinkAdmin from "@/components/CustomerNavLinkAdmin";
 
 export const customerNavLinks = [
   {
@@ -32,6 +33,9 @@ const CustomerHeader = () => {
         {customerNavLinks.map((link) => (
           <NavItem key={link.name} href={link.href} name={link.name} />
         ))}
+        <li>
+          <CustomerNavLinkAdmin />
+        </li>
         <li className="">
           <ModeToggle />
         </li>

@@ -4,6 +4,7 @@ import { Separator } from "@/components/ui/separator";
 import NavItem from "@/components/NavItem";
 import { customerNavLinks } from "./CustomerHeader";
 import { ModeToggle } from "@/components/ModeToggle";
+import CustomerNavLinkAdmin from "@/components/CustomerNavLinkAdmin";
 
 const CustomerMobileNav = () => {
   return (
@@ -18,6 +19,9 @@ const CustomerMobileNav = () => {
           {customerNavLinks.map((link) => (
             <NavItem key={link.name} href={link.href} name={link.name} />
           ))}
+          <li className="list-none">
+            <CustomerNavLinkAdmin />
+          </li>
           <li className="list-none px-3">
             <ModeToggle />
           </li>
