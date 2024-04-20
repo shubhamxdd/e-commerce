@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ModeToggle } from "@/components/ModeToggle";
 import CustomerMobileNav from "./CustomerMobileNav";
 
-export const adminNavLinks = [
+export const customerNavLinks = [
   {
     name: "Home",
     href: "/",
@@ -13,8 +13,8 @@ export const adminNavLinks = [
     href: "/products",
   },
   {
-    name: "About",
-    href: "/",
+    name: "My orders",
+    href: "/orders",
   },
   {
     name: "Contact Us",
@@ -29,7 +29,7 @@ const CustomerHeader = () => {
         <Link href={"/admin"}>LogoHere</Link>
       </h1>
       <ul className="md:flex gap-2 hidden">
-        {adminNavLinks.map((link) => (
+        {customerNavLinks.map((link) => (
           <NavItem key={link.name} href={link.href} name={link.name} />
         ))}
         <li className="">
