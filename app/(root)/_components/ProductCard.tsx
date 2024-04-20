@@ -24,13 +24,15 @@ const ProductCard = ({ product }: ProductCard) => {
       <CardHeader>
         <CardTitle className="">
           <div className="relative w-full h-72">
-            <Image
-              src={product.image}
-              alt={product.name}
-              fill
-              className="rounded-lg"
-              style={{ objectFit: "cover" }}
-            />
+            <Link href={`/products/${product.id}`}>
+              <Image
+                src={product.image}
+                alt={product.name}
+                fill
+                className="rounded-lg"
+                style={{ objectFit: "cover" }}
+              />
+            </Link>
           </div>
         </CardTitle>
         <CardDescription>
@@ -45,9 +47,11 @@ const ProductCard = ({ product }: ProductCard) => {
               {"Tag 3"}
             </p>
           </div>
-          <h2 className="my-1 text-xl font-semibold capitalize text-primary">
-            {product.name}
-          </h2>
+          <Link href={`/products/${product.id}`}>
+            <h2 className="my-1 text-xl font-semibold capitalize text-primary">
+              {product.name}
+            </h2>
+          </Link>
         </CardDescription>
       </CardHeader>
       <CardContent className="-my-3">
