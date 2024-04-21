@@ -3,16 +3,21 @@ import { formatCurrency } from "@/lib/currencyFormatter";
 import { Product } from "@prisma/client";
 import { MdOutlineDoubleArrow } from "react-icons/md";
 import { ImageComp } from "./PerProductImageInsideGrid";
+import { Suspense } from "react";
+import PerPageSkeleton from "./PerPageSkeleton";
 
 interface ProductPageProps {
-  product: Product;
+  fetchFn: () => Promise<Product>;
 }
 
-const ProductPage = ({ product }: ProductPageProps) => {
+const ProductPage = async ({ fetchFn }: ProductPageProps) => {
+  const product = await fetchFn();
   return (
     <>
-      <ImageComp product={product} />
-      <DescComp product={product} />
+      <Suspense fallback={<PerPageSkeleton />}>
+        <ImageComp product={product} />
+        <DescComp product={product} />
+      </Suspense>
       {/* <ButtonComp product={product} /> */}
     </>
   );
