@@ -1,6 +1,7 @@
 import { getProductById } from "@/app/(admin)/_actions/actions";
 import Stripe from "stripe";
 import CheckoutForm from "./CheckoutForm";
+import { Metadata, ResolvingMetadata } from "next";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
@@ -28,3 +29,14 @@ const PurchasePage = async ({ params: { id } }: { params: { id: string } }) => {
 };
 
 export default PurchasePage;
+
+export async function generateMetadata(
+  { params: { id } }: { params: { id: string } },
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const prodData = await getProductById(id);
+  return {
+    title: prodData.name,
+    description: `The product name is ${prodData.name} and ${prodData.description} and it costs ${prodData.price} `,
+  };
+}
