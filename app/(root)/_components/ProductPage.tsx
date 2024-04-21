@@ -5,6 +5,7 @@ import { MdOutlineDoubleArrow } from "react-icons/md";
 import { ImageComp } from "./PerProductImageInsideGrid";
 import { Suspense } from "react";
 import PerPageSkeleton from "./PerPageSkeleton";
+import Link from "next/link";
 
 interface ProductPageProps {
   fetchFn: () => Promise<Product>;
@@ -31,6 +32,7 @@ const DescComp = ({
   product: {
     name: string;
     price: number;
+    id: string;
     description: string;
   };
 }) => {
@@ -72,31 +74,16 @@ const DescComp = ({
         </p>
       </div>
       <div className="my-5 group">
-        <Button variant={"outline"}>
-          Buy Now
-          <MdOutlineDoubleArrow
-            className="transition-all duration-300 group-hover:translate-x-2 group-focus:translate-x-2 group-focus-within:translate-x-2 mx-[2px]"
-            size={20}
-          />
+        <Button variant={"outline"} asChild>
+          <Link href={`/products/${product.id}/purchase`}>
+            Buy Now
+            <MdOutlineDoubleArrow
+              className="transition-all duration-300 group-hover:translate-x-2 group-focus:translate-x-2 group-focus-within:translate-x-2 mx-[2px]"
+              size={20}
+            />
+          </Link>
         </Button>
       </div>
     </div>
   );
 };
-
-// const ButtonComp = ({
-//   product,
-// }: {
-//   product: {
-//     name: string;
-//     id: string;
-//   };
-// }) => {
-//   return (
-//     <div className="aside col-span-1 sm:col-span-2 md:col-span-2">
-//       <div className="flex flex-col gap-5 mt-10 sticky top-10 max-md:pb-20">
-//         <Button variant={"outline"}>Buy Now</Button>
-//       </div>
-//     </div>
-//   );
-// };

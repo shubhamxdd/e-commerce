@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
@@ -46,7 +45,7 @@ const CheckoutForm = ({ product, clientSecret }: CheckoutFormProps) => {
       <h2 className="max-sm:text-3xl text-4xl font-bold text-center mb-5">
         Checkout
       </h2>
-      <div className="flex max-sm:flex-col flex-row justify-center items-center">
+      <div className="flex max-sm:flex-col flex-row justify-center md:items-center">
         <div>
           <Carousel className="mx-auto my-3">
             <CarouselContent>
