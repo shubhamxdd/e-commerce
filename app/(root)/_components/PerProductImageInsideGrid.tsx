@@ -28,9 +28,9 @@ export const ImageComp = ({
         >
           <IoChevronBack size={30} />
         </div>
-        <Carousel className="top-0 sticky mx-auto my-3 ">
+        <Carousel className="top-48 sticky mx-auto ">
           <CarouselContent>
-            <CarouselItem className="relative h-screen">
+            <CarouselItem className="relative h-[400px]">
               {product?.image && (
                 <Image
                   src={product.image}
@@ -40,36 +40,18 @@ export const ImageComp = ({
                 />
               )}
             </CarouselItem>
-            <CarouselItem className="relative h-screen">
-              {product?.image && (
-                <Image
-                  src={product.image}
-                  alt={product.name}
-                  fill
-                  style={{ objectFit: "cover", objectPosition: "center" }}
-                />
-              )}
-            </CarouselItem>
-            <CarouselItem className="relative h-screen">
-              {product?.image && (
-                <Image
-                  src={product.image}
-                  alt={product.name}
-                  fill
-                  style={{ objectFit: "cover", objectPosition: "left" }}
-                />
-              )}
-            </CarouselItem>
-            <CarouselItem className="relative h-screen">
-              {product?.image && (
-                <Image
-                  src={product.image}
-                  alt={product.name}
-                  fill
-                  style={{ objectFit: "cover", objectPosition: "right" }}
-                />
-              )}
-            </CarouselItem>
+            {["center", "left", "right", "top", "bottom"].map((pos) => (
+              <CarouselItem className="relative h-[400px]">
+                {product?.image && (
+                  <Image
+                    src={product.image}
+                    alt={product.name}
+                    fill
+                    style={{ objectFit: "cover", objectPosition: pos }}
+                  />
+                )}
+              </CarouselItem>
+            ))}
           </CarouselContent>
           <CarouselPrevious />
           <CarouselNext />
