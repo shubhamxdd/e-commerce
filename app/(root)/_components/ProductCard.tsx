@@ -64,12 +64,14 @@ const ProductCard = ({ product }: ProductCard) => {
       </CardContent>
       <CardFooter>
         <div className="flex gap-2 w-full">
-          <Button className="w-full group">
-            <span>Buy it now</span>
-            <MdOutlineDoubleArrow
-              className="transition-all duration-300 group-hover:translate-x-2 group-focus:translate-x-2 group-focus-within:translate-x-2 mx-[2px]"
-              size={20}
-            />
+          <Button className="w-full group" asChild>
+            <Link href={`/products/${product.id}/purchase`}>
+              <span>Buy it now</span>
+              <MdOutlineDoubleArrow
+                className="transition-all duration-300 group-hover:translate-x-2 group-focus:translate-x-2 group-focus-within:translate-x-2 mx-[2px]"
+                size={20}
+              />
+            </Link>
             {/* todo implement add to cart */}
           </Button>
           <Button
