@@ -61,7 +61,7 @@ const CheckoutForm = ({ product, clientSecret }: CheckoutFormProps) => {
                 )}
               </CarouselItem>
               {["center", "left", "right", "top", "bottom"].map((pos) => (
-                <CarouselItem className="relative h-[400px]">
+                <CarouselItem className="relative h-[400px]" key={pos}>
                   {product?.image && (
                     <Image
                       src={product.image}
