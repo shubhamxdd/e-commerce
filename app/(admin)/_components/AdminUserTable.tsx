@@ -10,8 +10,6 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
@@ -55,9 +53,7 @@ const AdminUserTable = async () => {
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent>
-                  <DropdownMenuItem>
-                    <DeleteUser id={user.id} />
-                  </DropdownMenuItem>
+                  <DeleteUser id={user.id} />
                 </DropdownMenuContent>
               </DropdownMenu>
             </TableCell>
