@@ -243,3 +243,37 @@ export const deleteUser = async (id: string) => {
     throw new Error("Error changing availability");
   }
 };
+
+export const getOrders = async () => {
+  try {
+    const orders = await prisma.order.findMany({
+      select: {
+        id: true,
+        price: true,
+        product: { select: { name: true } },
+        user: { select: { email: true } },
+      },
+      orderBy: { createdAt: "desc" },
+    });
+
+    if (orders.length === 0) return [];
+
+    return orders;
+  } catch (error) {
+    console.log(error);
+    throw new Error("Error fetching orders");
+  }
+};
+
+export const deleteOrder = async (id: string) => {
+  try {
+    const order = await prisma.order.delete({
+      where: { id },
+    });
+
+    if (!order) return notFound();
+  } catch (error) {
+    console.log(error);
+    throw new Error("Error changing availability");
+  }
+};
