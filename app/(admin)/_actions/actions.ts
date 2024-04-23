@@ -208,3 +208,38 @@ export const updateProduct = async (
 
   // console.log(formData);
 };
+
+export const getUsers = async () => {
+  try {
+    const users = await prisma.user.findMany({
+      select: {
+        id: true,
+        email: true,
+        orders: {
+          select: { price: true },
+        },
+      },
+      orderBy: {
+        createdAt: "desc",
+      },
+    });
+    if (users.length === 0) return [];
+    return users;
+  } catch (error) {
+    console.log(error);
+    throw new Error("Error fetching users");
+  }
+};
+
+export const deleteUser = async (id: string) => {
+  try {
+    const user = await prisma.user.delete({
+      where: { id },
+    });
+
+    if (!user) return notFound();
+  } catch (error) {
+    console.log(error);
+    throw new Error("Error changing availability");
+  }
+};
