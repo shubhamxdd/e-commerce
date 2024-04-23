@@ -13,12 +13,12 @@ export const adminNavLinks = [
     href: "/admin/products",
   },
   {
-    name: "About us",
-    href: "/admin",
+    name: "Orders",
+    href: "/admin/orders",
   },
   {
-    name: "Baigan",
-    href: "/admin",
+    name: "Users",
+    href: "/admin/users",
   },
 ];
 const AdminHeader = () => {
