@@ -29,7 +29,7 @@ const PurchaseEmail = ({
       <Preview>Hi you have placed order of {product.name}</Preview>
       <Tailwind>
         <Head>
-            <title>Order Confirmed for product {product.name}</title>
+          <title>Order Confirmed for product {product.name}</title>
         </Head>
         <Body className="font-sans bg-white">
           <Container className="max-w-xl">
@@ -53,15 +53,15 @@ const PurchaseEmail = ({
 
 export default PurchaseEmail;
 
-PurchaseEmail.PreviewProps = {
-  email: "shubham@gmail.com",
-  product: {
-    id: "442",
-    image:
-      "https://e-commerce-gamma-six-62.vercel.app/_next/image?url=http%3A%2F%2Fres.cloudinary.com%2Fdpzegsll4%2Fimage%2Fupload%2Fv1713555583%2Fmwrjdrwidfhhgin3j86y.png&w=1920&q=75",
-    name: "Mekbook",
-    description: "A laptop that is very fast",
-  },
-  price: "2000",
-  order: { id: "123", createdAt: new Date(), price: 200 },
-} satisfies PurchaseEmailProps;
+// PurchaseEmail.PreviewProps = {
+//   email: "shubham@gmail.com",
+//   product: {
+//     id: "442",
+//     image:
+//       "https://e-commerce-gamma-six-62.vercel.app/_next/image?url=http%3A%2F%2Fres.cloudinary.com%2Fdpzegsll4%2Fimage%2Fupload%2Fv1713555583%2Fmwrjdrwidfhhgin3j86y.png&w=1920&q=75",
+//     name: "Mekbook",
+//     description: "A laptop that is very fast",
+//   },
+//   price: "2000",
+//   order: { id: "123", createdAt: new Date(), price: 200 },
+// } satisfies PurchaseEmailProps;

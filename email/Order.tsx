@@ -71,7 +71,7 @@ const OrderInformation = ({ order, product }: OrderInformationProps) => {
           </Column>
         </Row>
 
-        <Text className="text-gray-600 mb-0">{product.description} "D"</Text>
+        <Text className="text-gray-600 mb-0">{product.description}</Text>
       </Section>
     </>
   );
