@@ -14,7 +14,6 @@ export const submitContactForm = async (
   formData: FormData
 ) => {
   try {
-    console.log(formData);
     const res = contactFormSchema.safeParse(
       Object.fromEntries(formData.entries())
     );
