@@ -19,7 +19,7 @@ export const customerNavLinks = [
   },
   {
     name: "Contact Us",
-    href: "/",
+    href: "/contact",
   },
 ];
 const CustomerHeader = () => {
