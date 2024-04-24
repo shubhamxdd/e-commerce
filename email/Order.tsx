@@ -63,17 +63,17 @@ const OrderInformation = ({ order, product }: OrderInformationProps) => {
           </Column>
           <Column align="right">
             <Button
-              className="bg-blue-700 text-white rounded-lg text-lg px-6 py-4"
+              className="bg-blue-700 text-white rounded-lg  px-4 py-2"
               href={`${process.env.NEXT_PUBLIC_SERVER_URL}/products/${product.id}`}
             >
               Visit product page
             </Button>
           </Column>
-          <Row>
-            <Column>
-              <Text className="text-gray-600 mb-0">{product.description}</Text>
-            </Column>
-          </Row>
+        </Row>
+        <Row>
+          <Column>
+            <Text className="text-gray-600 mb-0">{product.description}</Text>
+          </Column>
         </Row>
       </Section>
     </>
