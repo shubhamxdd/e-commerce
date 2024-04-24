@@ -6,7 +6,6 @@ import Stripe from "stripe";
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
 export async function POST(request: NextRequest) {
-  // console.log({ text: await request.text(), json: await request.json() });
   const event = stripe.webhooks.constructEvent(
     await request.text(),
     request.headers.get("stripe-signature")!,
@@ -45,7 +44,22 @@ export async function POST(request: NextRequest) {
       },
     });
 
-    await sendMail({ email });
+    // await sendMail({ email, order, price, product });
+    await sendMail({
+      email,
+      order: {
+        createdAt: order.createdAt,
+        id: order.id,
+        price: order.price,
+      },
+      price,
+      product: {
+        name: product.name,
+        description: product.description,
+        id: product.id,
+        image: product.image,
+      },
+    });
   }
 
   return NextResponse.json({ received: true });
