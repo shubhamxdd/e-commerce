@@ -9,6 +9,7 @@ export const getLatestProducts = async () => {
       orderBy: {
         createdAt: "desc",
       },
+      take: 6,
     });
     if (!products) return [];
 
@@ -30,6 +31,7 @@ export const getPopularProducts = async () => {
           _count: "desc",
         },
       },
+      take: 6,
     });
     if (!products) return [];
 
