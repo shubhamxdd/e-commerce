@@ -1,12 +1,5 @@
 import { TbMenuDeep } from "react-icons/tb";
-import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Separator } from "@/components/ui/separator";
 import NavItem from "@/components/NavItem";
 import { adminNavLinks } from "./AdminHeader";
