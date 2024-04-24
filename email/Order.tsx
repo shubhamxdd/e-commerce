@@ -70,11 +70,8 @@ const OrderInformation = ({ order, product }: OrderInformationProps) => {
             </Button>
           </Column>
         </Row>
-        <Row>
-          <Column>
-            <Text className="text-gray-600 mb-0">{product.description}</Text>
-          </Column>
-        </Row>
+
+        <Text className="text-gray-600 mb-0">{product.description} "D"</Text>
       </Section>
     </>
   );
