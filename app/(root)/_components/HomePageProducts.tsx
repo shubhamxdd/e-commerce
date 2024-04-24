@@ -23,7 +23,7 @@ const HomePageProducts = async ({ title, fetchFn }: HomePageProductsProps) => {
   const products = await fetchFn();
   return (
     <div className="space-y-4 my-4">
-      <div className="flex gap-4 max-md:flex-row max-md:justify-center max-md:items-center justify-between">
+      <div className="flex gap-4 my-5 max-md:flex-row max-md:justify-center max-md:items-center justify-between">
         <h2 className="max-sm:text-2xl text-3xl font-bold">{title}</h2>
         <Button asChild variant={"secondary"} className="group">
           <Link href={"/products"} className="space-x-2">
