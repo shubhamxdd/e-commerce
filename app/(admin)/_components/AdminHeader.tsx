@@ -13,6 +13,10 @@ export const adminNavLinks = [
     href: "/admin/products",
   },
   {
+    name: "Contact",
+    href: "/admin/contact",
+  },
+  {
     name: "Orders",
     href: "/admin/orders",
   },
