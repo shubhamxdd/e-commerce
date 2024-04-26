@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -8,9 +7,8 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Contact } from "@prisma/client";
-
-import { IoIosSend } from "react-icons/io";
 import UpdateStatusButton from "./UpdateStatusButton";
+import SendMail from "./SendMail";
 
 interface AdminContactCardProps {
   query: Contact;
@@ -27,13 +25,7 @@ const AdminContactCard = ({ query }: AdminContactCardProps) => {
         <p>{query.query}</p>
       </CardContent>
       <CardFooter className="flex gap-2">
-        <Button className="group">
-          <IoIosSend
-            size={20}
-            className="group-hover:scale-125 group-focus-within:scale-125 group-focus:scale-125 transition-all duration-300"
-          />
-          <span>Send mail</span>
-        </Button>
+        <SendMail />
         <UpdateStatusButton id={query.id} />
       </CardFooter>
     </Card>
