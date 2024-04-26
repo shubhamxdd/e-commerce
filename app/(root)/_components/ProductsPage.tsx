@@ -1,4 +1,4 @@
-import ProductCard from "./ProductCard";
+import ProductGrid from "../products/_components/ProductGrid";
 
 interface ProductsPageProps {
   fetchFn: () => Promise<
@@ -21,13 +21,8 @@ const ProductsPageComp = async ({ fetchFn }: ProductsPageProps) => {
     <div className="space-y-4 my-4">
       <div className="flex gap-4 max-md:flex-row max-md:justify-center max-md:items-center">
         <h2 className="max-sm:text-2xl text-3xl font-bold">All Products🐼</h2>
-        {/* TODO implement search and filtering here */}
       </div>
-      <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 place-items-center my-4">
-        {products.map((product) => (
-          <ProductCard product={product} key={product.id} />
-        ))}
-      </div>
+      <ProductGrid products={products} />
     </div>
   );
 };
