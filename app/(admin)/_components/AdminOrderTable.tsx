@@ -43,7 +43,7 @@ const AdminOrderTable = async () => {
           <TableRow key={order.id}>
             <TableCell>{order.product.name}</TableCell>
             <TableCell>{order.user.email}</TableCell>
-            <TableCell>{formatCurrency(order.price)}</TableCell>
+            <TableCell>{formatCurrency(order.price / 100)}</TableCell>
             <TableCell>
               {/* dropdown */}
               <DropdownMenu>

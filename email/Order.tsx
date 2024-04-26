@@ -51,7 +51,9 @@ const OrderInformation = ({ order, product }: OrderInformationProps) => {
             <Text className="mb-0 text-gray-600 whitespace-nowrap text-nowrap mr-4">
               Price Paid
             </Text>
-            <Text className="mt-0 mr-4">{formatCurrency(order.price)}</Text>
+            <Text className="mt-0 mr-4">
+              {formatCurrency(order.price / 100)}
+            </Text>
           </Column>
         </Row>
       </Section>

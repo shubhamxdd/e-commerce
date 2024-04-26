@@ -42,7 +42,9 @@ const AdminUserTable = async () => {
             <TableCell>{user.email}</TableCell>
             <TableCell>{formatNumber(user.orders.length)}</TableCell>
             <TableCell>
-              {formatCurrency(user.orders.reduce((acc, i) => i.price + acc, 0))}
+              {formatCurrency(
+                user.orders.reduce((acc, i) => i.price + acc, 0) / 100
+              )}
             </TableCell>
             <TableCell>
               {/* dropdown */}

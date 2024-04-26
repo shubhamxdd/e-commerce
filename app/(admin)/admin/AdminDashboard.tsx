@@ -20,15 +20,17 @@ const AdminDashboard = async () => {
       title: "Sales",
       description: `Total number of sales: ${formatNumber(totalSales)}`,
       content: `Total amount of sales done: ${formatCurrency(
-        totalSalesAmount
+        totalSalesAmount / 100
       )}`,
     },
     {
       title: "Users",
       description: `Total number of Users: ${formatNumber(userCount)}`,
-      content: `Average amount of sales : ${formatCurrency(averageSalesValue)}`,
-      content1: `Max amount of sales: ${formatCurrency(maxSalesValue)}`,
-      content2: `Min amount of sales: ${formatCurrency(minSalesValue)}`,
+      content: `Average amount of sales : ${formatCurrency(
+        averageSalesValue / 100
+      )}`,
+      content1: `Max amount of sales: ${formatCurrency(maxSalesValue / 100)}`,
+      content2: `Min amount of sales: ${formatCurrency(minSalesValue / 100)}`,
     },
     {
       title: "Products",
