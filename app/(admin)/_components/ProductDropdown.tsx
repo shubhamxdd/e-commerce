@@ -13,6 +13,7 @@ import { HiDotsHorizontal } from "react-icons/hi";
 import { changeAvailability, deleteProduct } from "../_actions/actions";
 import { useTransition } from "react";
 import { useRouter } from "next/navigation";
+import { useToast } from "@/components/ui/use-toast";
 
 interface ProductDropdownProps {
   product: {
@@ -32,6 +33,8 @@ const ProductDropdown = ({ product }: ProductDropdownProps) => {
 
   const router = useRouter();
 
+  const { toast } = useToast();
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
@@ -45,7 +48,7 @@ const ProductDropdown = ({ product }: ProductDropdownProps) => {
         </DropdownMenuItem>
 
         {/* change availability  */}
-        {/* todo add a confirmation dialog */}
+
         <DropdownMenuItem
           disabled={isPending}
           onClick={() => {
@@ -53,13 +56,20 @@ const ProductDropdown = ({ product }: ProductDropdownProps) => {
               await changeAvailability(product.id, !product.isAvailable);
             });
             router.refresh();
+            toast({
+              title: "Product availability changed",
+              description: `Product ${product.name} is now ${
+                product.isAvailable ? "unavailable" : "available"
+              }`,
+            });
           }}
         >
           Make {product.isAvailable ? "Unavailable" : "Available"}
         </DropdownMenuItem>
+
         <DropdownMenuSeparator />
+
         {/* del dropdown */}
-        {/* todo add a confirmation dialog */}
         <DropdownMenuItem
           className="text-red-500"
           disabled={isPendingDel || product._count.Order > 0}
@@ -68,6 +78,10 @@ const ProductDropdown = ({ product }: ProductDropdownProps) => {
               await deleteProduct(product.id);
             });
             router.refresh();
+            toast({
+              title: "Product is deleted",
+              description: `Product ${product.name} is deleted`,
+            });
           }}
         >
           Delete
@@ -78,4 +92,3 @@ const ProductDropdown = ({ product }: ProductDropdownProps) => {
 };
 
 export default ProductDropdown;
-// TODO more refactoring
