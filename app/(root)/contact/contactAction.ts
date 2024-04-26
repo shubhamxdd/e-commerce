@@ -1,5 +1,6 @@
 "use server";
 
+import { sendContactMail } from "@/app/(admin)/admin/contact/contactMailer";
 import prisma from "@/prisma/prisma";
 import { z } from "zod";
 
@@ -30,6 +31,8 @@ export const submitContactForm = async (
         query: res.data.query,
       },
     });
+
+    await sendContactMail({ email: contact.email, Query: contact });
 
     return {
       message: `${contact.id}`,
