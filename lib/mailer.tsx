@@ -43,7 +43,7 @@ export const sendMail = async ({
   );
 
   const mailOptions = {
-    from: `Support <${process.env.GMAIL_USER}>`,
+    from: `Purchase <${process.env.GMAIL_USER}>`,
     to: email,
     subject: `Order Confirmed for product ${product.name}`,
     html: emailHtml,

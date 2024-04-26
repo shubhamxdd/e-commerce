@@ -69,7 +69,7 @@ export const getProductsByEmail = async (
     );
 
     const mailOptions = {
-      from: `Support <${process.env.GMAIL_USER}>`,
+      from: `History <${process.env.GMAIL_USER}>`,
       to: user.email,
       subject: `Order History for user ${user.email}`,
       html: emailHtml,
