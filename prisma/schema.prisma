@@ -63,6 +63,8 @@ model Contact {
   email String
   query String?
 
+  isResolved Boolean @default(false)
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }

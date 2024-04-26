@@ -13,7 +13,7 @@ export const adminNavLinks = [
     href: "/admin/products",
   },
   {
-    name: "Contact",
+    name: "Queries",
     href: "/admin/contact",
   },
   {

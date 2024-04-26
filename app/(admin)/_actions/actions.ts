@@ -276,20 +276,3 @@ export const deleteOrder = async (id: string) => {
     throw new Error("Error changing availability");
   }
 };
-
-export const getContactQueries = async () => {
-  try {
-    const queries = await prisma.contact.findMany({
-      orderBy: {
-        createdAt: "desc",
-      },
-    });
-
-    if (queries.length === 0) return [];
-
-    return queries;
-  } catch (error) {
-    console.log(error);
-    throw new Error("Error fetching contact queries");
-  }
-};

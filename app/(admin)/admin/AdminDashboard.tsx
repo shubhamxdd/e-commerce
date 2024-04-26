@@ -5,12 +5,15 @@ import {
   getUserData,
 } from "../_actions/actions";
 import { formatCurrency, formatNumber } from "@/lib/currencyFormatter";
+import { getQueries } from "./contact/contactActions";
 const AdminDashboard = async () => {
   const { totalSales, totalSalesAmount } = await getSalesData();
   const { userCount, averageSalesValue, maxSalesValue, minSalesValue } =
     await getUserData();
   const { availableProducts, totalProducts, unavailableProducts } =
     await getProductsData();
+
+  const { queriesLength, resolvedQueriesLength } = await getQueries();
 
   const data = [
     {
@@ -32,6 +35,16 @@ const AdminDashboard = async () => {
       description: `Total Products: ${formatNumber(totalProducts)}`,
       content: `Available Products: ${formatNumber(availableProducts)}`,
       content1: `Unavailable Products: ${formatNumber(unavailableProducts)}`,
+    },
+    {
+      title: "Queries",
+      description: `Total number of queries: ${formatNumber(queriesLength)}`,
+      content: `Total number of resolved queries: ${formatNumber(
+        resolvedQueriesLength
+      )}`,
+      content2: `Total number of unresolved queries: ${formatNumber(
+        queriesLength - resolvedQueriesLength
+      )}`,
     },
   ];
 
