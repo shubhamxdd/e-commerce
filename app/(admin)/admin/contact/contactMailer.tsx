@@ -1,7 +1,7 @@
 import nodemailer from "nodemailer";
-// import { render } from "@react-email/render";
-import { formatCurrency } from "@/lib/currencyFormatter";
+import { render } from "@react-email/render";
 import { Contact } from "@prisma/client";
+import ContactMail from "@/email/Contact";
 
 interface mailerProps {
   email: string;
@@ -21,17 +21,15 @@ export const sendContactMail = async ({ email, Query }: mailerProps) => {
     },
   });
 
+  Query.query;
+
+  const mail = render(<ContactMail query={Query} />);
+
   const mailOptions = {
     from: `Support <${process.env.GMAIL_USER}>`,
     to: email,
     subject: `Contact Request Received: ${Query.name}`,
-    html: `
-        <h1>Dear ${Query.name},</h1> 
-        <p>Thank you for contacting us. We have received your request regarding "${Query.query}".</p>
-        <p>Our team will review your request and get back to you shortly.</p>
-        <p>Best regards,</p>
-        <p>Shubham.</p>
-    `,
+    html: mail,
   };
 
   const mailers = await transporter.sendMail(mailOptions);
