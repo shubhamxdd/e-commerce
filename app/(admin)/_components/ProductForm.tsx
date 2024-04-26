@@ -73,11 +73,6 @@ const ProductForm = ({ product }: ProductFormProps) => {
           value={res?.url}
           defaultValue={product?.image || ""}
         />
-        {/* <p className="text-sm text-muted-foreground">
-              Dont edit this field
-            </p>
-          </>
-        )} */}
 
         {/* img */}
 
@@ -122,14 +117,9 @@ const ProductForm = ({ product }: ProductFormProps) => {
                     </div>
                   ) : (
                     <div className="p-2 flex items-center justify-center">
-                      <Image
-                        src={product?.image || ""}
-                        alt="prod image"
-                        width={400}
-                        height={200}
-                        className=""
-                        style={{ objectFit: "cover" }}
-                      />
+                      <h2 className="text-xl font-semibold">
+                        Please upload image !
+                      </h2>
                     </div>
                   )}
                 </div>
