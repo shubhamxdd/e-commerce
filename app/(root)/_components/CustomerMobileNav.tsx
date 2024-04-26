@@ -8,10 +8,10 @@ import CustomerNavLinkAdmin from "@/components/CustomerNavLinkAdmin";
 
 const CustomerMobileNav = () => {
   return (
-    <nav className="md:hidden bg-primary">
+    <nav className="md:hidden bg-primary z-[12]">
       <Sheet>
-        <SheetTrigger className="align-middle">
-          <TbMenuDeep size={28} className="bg-slate-900" />
+        <SheetTrigger className="align-middle bg-zinc-100 p-1 dark:bg-slate-800">
+          <TbMenuDeep size={28} className="bg-zinc-100 dark:bg-slate-800" />
         </SheetTrigger>
         <SheetContent className="flex flex-col gap-3 md:hidden">
           <p className="px-4 text-[20px] md:text-[22px] font-bold">LogoHere</p>
