@@ -12,6 +12,7 @@ const ContactForm = () => {
   const { toast } = useToast();
   return (
     <>
+      {/* todo send email saying will contact soon etc fom here */}
       <form action={action} className="my-5 space-y-6">
         <div>
           <Label htmlFor="name">Name</Label>

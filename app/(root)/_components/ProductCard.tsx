@@ -72,7 +72,6 @@ const ProductCard = ({ product }: ProductCard) => {
                 size={20}
               />
             </Link>
-            {/* todo implement add to cart */}
           </Button>
           <Button
             className="w-full group flex flex-row items-center"

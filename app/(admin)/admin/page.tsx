@@ -1,11 +1,7 @@
 import { Metadata } from "next";
 import AdminDashboard from "./AdminDashboard";
-// import AdminLogin from "./AdminLogin";
 
 const AdminPage = async () => {
-  // TODO Admin Login
-  // let loggedIn = false;
-  // if (!loggedIn) return <AdminLogin />;
   return <AdminDashboard />;
 };
 
