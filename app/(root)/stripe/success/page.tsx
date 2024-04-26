@@ -43,8 +43,7 @@ const StripeSuccessPage = async ({
 
   return (
     <div className="my-5">
-      <h2 className="max-sm:text-3xl text-4xl font-bold text-center mb-5">
-        {/* todo add gradient text here */}
+      <h2 className="max-sm:text-3xl text-4xl font-extrabold text-center mb-5 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-red-500 to-indigo-500">
         {isPaymentSuccessful
           ? "Payment was successful"
           : "An error occured while processing payment"}
