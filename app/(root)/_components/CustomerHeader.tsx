@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ModeToggle } from "@/components/ModeToggle";
 import CustomerMobileNav from "./CustomerMobileNav";
 import CustomerNavLinkAdmin from "@/components/CustomerNavLinkAdmin";
+import LoginLogout from "./LoginLogout";
 
 export const customerNavLinks = [
   {
@@ -34,6 +35,9 @@ const CustomerHeader = () => {
         ))}
         <li>
           <CustomerNavLinkAdmin />
+        </li>
+        <li className="">
+          <LoginLogout />
         </li>
         <li className="">
           <ModeToggle />

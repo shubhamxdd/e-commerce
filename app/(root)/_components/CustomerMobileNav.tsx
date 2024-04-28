@@ -5,6 +5,7 @@ import NavItem from "@/components/NavItem";
 import { customerNavLinks } from "./CustomerHeader";
 import { ModeToggle } from "@/components/ModeToggle";
 import CustomerNavLinkAdmin from "@/components/CustomerNavLinkAdmin";
+import LoginLogout from "./LoginLogout";
 
 const CustomerMobileNav = () => {
   return (
@@ -21,6 +22,9 @@ const CustomerMobileNav = () => {
           ))}
           <li className="list-none">
             <CustomerNavLinkAdmin />
+          </li>
+          <li className="list-none">
+            <LoginLogout />
           </li>
           <li className="list-none px-3">
             <ModeToggle />
