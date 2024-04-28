@@ -8,6 +8,9 @@ import { cn } from "@/lib/utils";
 import { FormEvent, useState } from "react";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { signIn } from "next-auth/react";
+import useRegisterModal from "@/hooks/useRegisterModal";
+import useLoginModal from "@/hooks/useLoginModal";
+import LoginModal from "./LoginModal";
 
 export default function ProfileForm({
   className,
@@ -19,6 +22,9 @@ export default function ProfileForm({
     username: "",
   });
   const [loading, setLoading] = useState(false);
+
+  const registerModal = useRegisterModal();
+  const loginModal = useLoginModal();
 
   const { toast } = useToast();
 
@@ -111,6 +117,17 @@ export default function ProfileForm({
         ) : (
           "Register"
         )}
+      </Button>
+      <Button
+        variant={"ghost"}
+        className="text-sm text-slate-400"
+        type="button"
+        onClick={() => {
+          registerModal.onClose();
+          loginModal.onOpen();
+        }}
+      >
+        Login instead?
       </Button>
     </form>
   );
