@@ -119,12 +119,13 @@ export default function ProfileForm({
             onChange={(e) => setData({ ...data, password: e.target.value })}
           />
           <Button
-            size={"icon"}
             type="button"
+            variant={"secondary"}
             onClick={() => setShowPassword(!showPassword)}
             className=""
           >
-            {!showPassword ? <IoMdEye size={24} /> : <IoMdEyeOff size={24} />}
+            {/* {!showPassword ? <IoMdEye size={24} /> : <IoMdEyeOff size={24} />} */}
+            {!showPassword ? "Show" : "Hide"}
           </Button>
         </div>
       </div>
