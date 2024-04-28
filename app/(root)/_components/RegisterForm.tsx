@@ -30,18 +30,18 @@ export default function ProfileForm({
   const onSubmit = async (e: FormEvent) => {
     try {
       e.preventDefault();
-      if (data.email === "" || data.name === "" || data.password === "") {
-        throw new Error("Missing fields");
-      }
       setLoading(true);
       const res = await fetch("/api/auth/register", {
         method: "POST",
         body: JSON.stringify(data),
-      })
-        .then((res) => res.json())
-        .then((data) => console.log(data));
+      });
+      const resData = await res.json();
 
-      console.log(res);
+      if (!res.ok) {
+        throw resData;
+      }
+
+      // console.log(resData);
 
       toast({
         title: "User created successfully",
@@ -57,10 +57,10 @@ export default function ProfileForm({
         });
       });
     } catch (error: any) {
-      console.log("fromcatch", error);
+      console.log(error);
       toast({
         title: "Error creating user",
-        description: error.message,
+        description: error.error || error.message,
       });
     } finally {
       setLoading(false);

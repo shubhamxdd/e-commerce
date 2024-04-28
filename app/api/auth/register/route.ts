@@ -8,7 +8,27 @@ export async function POST(request: NextRequest) {
   const { email, name, password, username } = await request.json();
 
   if (email === "" || name === "" || password === "" || username === "") {
-    throw new Error("Missing fields");
+    return NextResponse.json(
+      {
+        error: "Missing fields",
+      },
+      { status: 400 }
+    );
+  }
+
+  const userExists = await prisma.user.findUnique({
+    where: {
+      email,
+    },
+  });
+
+  if (userExists) {
+    return NextResponse.json(
+      {
+        error: "User already exists",
+      },
+      { status: 400 }
+    );
   }
 
   //   hash the password
