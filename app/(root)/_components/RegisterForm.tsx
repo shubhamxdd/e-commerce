@@ -10,6 +10,7 @@ import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { signIn } from "next-auth/react";
 import useRegisterModal from "@/hooks/useRegisterModal";
 import useLoginModal from "@/hooks/useLoginModal";
+import { IoMdEye, IoMdEyeOff } from "react-icons/io";
 
 export default function ProfileForm({
   className,
@@ -21,6 +22,7 @@ export default function ProfileForm({
     username: "",
   });
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const registerModal = useRegisterModal();
   const loginModal = useLoginModal();
@@ -105,16 +107,26 @@ export default function ProfileForm({
           onChange={(e) => setData({ ...data, username: e.target.value })}
         />
       </div>
-      <div className="grid gap-2">
+      <div className="">
         <Label htmlFor="password">Password</Label>
-        <Input
-          disabled={loading}
-          minLength={1}
-          id="password"
-          type="password"
-          value={data.password}
-          onChange={(e) => setData({ ...data, password: e.target.value })}
-        />
+        <div className="flex items-center gap-2">
+          <Input
+            disabled={loading}
+            minLength={1}
+            id="password"
+            type={showPassword ? "text" : "password"}
+            value={data.password}
+            onChange={(e) => setData({ ...data, password: e.target.value })}
+          />
+          <Button
+            size={"icon"}
+            type="button"
+            onClick={() => setShowPassword(!showPassword)}
+            className=""
+          >
+            {!showPassword ? <IoMdEye size={24} /> : <IoMdEyeOff size={24} />}
+          </Button>
+        </div>
       </div>
       <Button type="submit" disabled={loading}>
         {loading ? (
