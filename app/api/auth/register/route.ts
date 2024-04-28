@@ -7,8 +7,8 @@ export async function POST(request: NextRequest) {
 
   const { email, name, password, username } = await request.json();
 
-  if (!email || !name || !password || !username) {
-    return NextResponse.json({ error: "Missing fields" }, { status: 400 });
+  if (email === "" || name === "" || password === "" || username === "") {
+    throw new Error("Missing fields");
   }
 
   //   hash the password

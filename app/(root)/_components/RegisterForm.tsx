@@ -10,7 +10,6 @@ import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { signIn } from "next-auth/react";
 import useRegisterModal from "@/hooks/useRegisterModal";
 import useLoginModal from "@/hooks/useLoginModal";
-import LoginModal from "./LoginModal";
 
 export default function ProfileForm({
   className,
@@ -31,6 +30,9 @@ export default function ProfileForm({
   const onSubmit = async (e: FormEvent) => {
     try {
       e.preventDefault();
+      if (data.email === "" || data.name === "" || data.password === "") {
+        throw new Error("Missing fields");
+      }
       setLoading(true);
       const res = await fetch("/api/auth/register", {
         method: "POST",
@@ -54,10 +56,11 @@ export default function ProfileForm({
           title: "User logged in successfully",
         });
       });
-    } catch (error) {
-      console.log(error);
+    } catch (error: any) {
+      console.log("fromcatch", error);
       toast({
         title: "Error creating user",
+        description: error.message,
       });
     } finally {
       setLoading(false);
@@ -75,6 +78,7 @@ export default function ProfileForm({
           disabled={loading}
           type="email"
           id="email"
+          minLength={1}
           value={data.email}
           onChange={(e) => setData({ ...data, email: e.target.value })}
         />
@@ -83,6 +87,7 @@ export default function ProfileForm({
         <Label htmlFor="name">Name</Label>
         <Input
           disabled={loading}
+          minLength={1}
           type="name"
           id="name"
           value={data.name}
@@ -93,6 +98,7 @@ export default function ProfileForm({
         <Label htmlFor="username">Username</Label>
         <Input
           disabled={loading}
+          minLength={1}
           type="username"
           id="username"
           value={data.username}
@@ -103,6 +109,7 @@ export default function ProfileForm({
         <Label htmlFor="password">Password</Label>
         <Input
           disabled={loading}
+          minLength={1}
           id="password"
           type="password"
           value={data.password}
