@@ -22,7 +22,7 @@ const CustomerNavLinkAdmin = () => {
     setTimeout(() => {
       setLoading(false);
       router.push("/admin");
-    }, 5000);
+    }, 3000);
   };
 
   return (

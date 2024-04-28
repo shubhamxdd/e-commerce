@@ -14,25 +14,32 @@ const handler = NextAuth({
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials, req) {
+        // console.log("started");
         if (!credentials?.email || !credentials.password) {
           throw new Error("Missing credentials");
         }
+
+        // console.log("cred found");
 
         const user = await prisma.user.findUnique({
           where: { email: credentials.email },
         });
 
+        // console.log("finding user");
+
         if (!user) {
           throw new Error("No user found");
         }
+
+        // console.log("user found");
 
         const isPasswordValid = user.password === credentials.password;
 
         if (!isPasswordValid) {
           throw new Error("Invalid password");
         }
+        // console.log("password is valid");
 
-        // console.log({ credentials, req });
         return user;
       },
     }),

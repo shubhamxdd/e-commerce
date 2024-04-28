@@ -28,11 +28,13 @@ export default function ProfileForm({
 
   const router = useRouter();
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     setLoading(true);
 
-    if (!email || !password)
+    if (!email || !password) {
       return toast({ title: "Please fill in all fields" });
+    }
 
     signIn("credentials", {
       email: email,
@@ -54,6 +56,7 @@ export default function ProfileForm({
         });
       }
     });
+    setLoading(false);
   };
 
   return (

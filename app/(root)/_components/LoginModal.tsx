@@ -23,7 +23,7 @@ export default function LoginModal() {
       onOpenChange={loginModal.isOpen ? loginModal.onClose : loginModal.onOpen}
     >
       <DialogTrigger asChild>
-        <Button variant="outline">Login</Button>
+        <Button variant="ghost">Login</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
