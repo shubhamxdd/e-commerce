@@ -9,16 +9,19 @@ import {
 } from "@/components/ui/card";
 import { formatCurrency } from "@/lib/currencyFormatter";
 import { Product } from "@prisma/client";
+import { getServerSession } from "next-auth";
 import Image from "next/image";
 import Link from "next/link";
 import { IoArrowRedoSharp } from "react-icons/io5";
 import { MdOutlineDoubleArrow } from "react-icons/md";
+import LoginToPurchaseBtn from "./LoginToPurchaseBtn";
 
 interface ProductCard {
   product: Product;
 }
 
-const ProductCard = ({ product }: ProductCard) => {
+const ProductCard = async ({ product }: ProductCard) => {
+  const session = await getServerSession();
   return (
     <Card className="flex flex-col overflow-hidden min-h-[380px] w-full max-w-[400px] md:min-h-[438px]">
       <CardHeader>
@@ -64,15 +67,20 @@ const ProductCard = ({ product }: ProductCard) => {
       </CardContent>
       <CardFooter>
         <div className="flex gap-2 w-full">
-          <Button className="w-full group" asChild>
-            <Link href={`/products/${product.id}/purchase`}>
-              <span>Buy it now</span>
-              <MdOutlineDoubleArrow
-                className="transition-all duration-300 group-hover:translate-x-2 group-focus:translate-x-2 group-focus-within:translate-x-2 mx-[2px]"
-                size={20}
-              />
-            </Link>
-          </Button>
+          {session ? (
+            <Button className="w-full group" asChild>
+              <Link href={`/products/${product.id}/purchase`}>
+                <span>Buy it now</span>
+                <MdOutlineDoubleArrow
+                  className="transition-all duration-300 group-hover:translate-x-2 group-focus:translate-x-2 group-focus-within:translate-x-2 mx-[2px]"
+                  size={20}
+                />
+              </Link>
+            </Button>
+          ) : (
+            <LoginToPurchaseBtn />
+          )}
+
           <Button
             className="w-full group flex flex-row items-center"
             variant={"outline"}

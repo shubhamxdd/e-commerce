@@ -5,7 +5,7 @@ import { getServerSession } from "next-auth";
 
 const LoginLogout = async () => {
   const session = await getServerSession();
-  console.log(session);
+  // console.log(session);
   return (
     <>
       {session?.user?.email ? (
