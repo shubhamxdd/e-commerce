@@ -6,8 +6,6 @@ import { ImageComp } from "./PerProductImageInsideGrid";
 import { Suspense } from "react";
 import PerPageSkeleton from "./PerPageSkeleton";
 import Link from "next/link";
-import { getServerSession, Session } from "next-auth";
-import LoginToPurchaseBtn from "./LoginToPurchaseBtn";
 
 interface ProductPageProps {
   fetchFn: () => Promise<Product>;
@@ -15,13 +13,11 @@ interface ProductPageProps {
 
 const ProductPage = async ({ fetchFn }: ProductPageProps) => {
   const product = await fetchFn();
-  const session = await getServerSession();
-
   return (
     <>
       <Suspense fallback={<PerPageSkeleton />}>
         <ImageComp product={product} />
-        <DescComp product={product} session={session} />
+        <DescComp product={product} />
       </Suspense>
       {/* <ButtonComp product={product} /> */}
     </>
@@ -32,7 +28,6 @@ export default ProductPage;
 
 const DescComp = ({
   product,
-  session,
 }: {
   product: {
     name: string;
@@ -40,7 +35,6 @@ const DescComp = ({
     id: string;
     description: string;
   };
-  session: Session | null;
 }) => {
   return (
     <div className="main col-span-1 sm:col-span-6 md:col-span-6 mx-4">
@@ -80,19 +74,15 @@ const DescComp = ({
         </p>
       </div>
       <div className="my-5 group">
-        {session ? (
-          <Button variant={"outline"} asChild>
-            <Link href={`/products/${product.id}/purchase`}>
-              Buy Now
-              <MdOutlineDoubleArrow
-                className="transition-all duration-300 group-hover:translate-x-2 group-focus:translate-x-2 group-focus-within:translate-x-2 mx-[2px]"
-                size={20}
-              />
-            </Link>
-          </Button>
-        ) : (
-          <LoginToPurchaseBtn />
-        )}
+        <Button variant={"outline"} asChild>
+          <Link href={`/products/${product.id}/purchase`}>
+            Buy Now
+            <MdOutlineDoubleArrow
+              className="transition-all duration-300 group-hover:translate-x-2 group-focus:translate-x-2 group-focus-within:translate-x-2 mx-[2px]"
+              size={20}
+            />
+          </Link>
+        </Button>
       </div>
     </div>
   );
