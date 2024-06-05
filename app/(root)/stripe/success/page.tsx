@@ -13,6 +13,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Stripe from "stripe";
+import dynamic from "next/dynamic";
+
+const ConfettiComp = dynamic(() => import("../../Confetti"), { ssr: false });
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
@@ -48,6 +51,7 @@ const StripeSuccessPage = async ({
           ? "Payment was successful"
           : "An error occured while processing payment"}
       </h2>
+      {isPaymentSuccessful && <ConfettiComp />}
       {isPaymentSuccessful && (
         <p className="text-center dark:text-blue-300 text-sky-600">
           You will shortly recive an email!
@@ -87,7 +91,6 @@ const StripeSuccessPage = async ({
             👆 this is a carousel component
           </p>
         </div>
-
         <div className="my-3 md:mx-20 flex flex-col gap-4">
           <h3 className="text-2xl font-semibold capitalize">{product.name}</h3>
           <p className="text-lg">{formatCurrency(product.price)}</p>
