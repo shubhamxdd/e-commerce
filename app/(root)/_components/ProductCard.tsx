@@ -23,14 +23,14 @@ const ProductCard = ({ product }: ProductCard) => {
     <Card className="flex flex-col overflow-hidden min-h-[380px] w-full max-w-[400px] md:min-h-[438px]">
       <CardHeader>
         <CardTitle className="">
-          <div className="relative w-full h-72">
+          <div className="relative w-full h-72 overflow-hidden rounded-lg">
             <Link href={`/products/${product.id}`}>
               <Image
                 src={product.image}
                 alt={product.name}
                 fill
-                className="rounded-lg"
                 style={{ objectFit: "cover" }}
+                className="rounded-lg transition-transform duration-300 ease-in-out transform hover:scale-110"
               />
             </Link>
           </div>
