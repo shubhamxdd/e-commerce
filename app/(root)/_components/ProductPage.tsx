@@ -38,7 +38,7 @@ const DescComp = ({
 }) => {
   return (
     <div className="main col-span-1 sm:col-span-6 md:col-span-6 mx-4">
-      <div className="sticky top-0 dark:bg-slate-950 bg-white pt-2 pb-2">
+      <div className="sticky top-[54px] dark:bg-slate-950 bg-white pt-2 pb-2">
         <h1 className="text-2xl font-bold">{product.name}</h1>
         <div className="text-lg font-semibold mt-2">
           {formatCurrency(product.price)}
