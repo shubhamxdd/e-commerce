@@ -13,7 +13,7 @@ const LoginLogout = async () => {
       ) : (
         <>
           <div className="hidden md:flex">
-            <LoginModal />
+            {/* <LoginModal /> */}
             <RegisterModal />
           </div>
           <div className="flex md:hidden flex-col gap-3">

@@ -23,7 +23,7 @@ export default function RegisterModal() {
       }
     >
       <DialogTrigger asChild>
-        <Button variant="ghost">Register</Button>
+        <Button variant="secondary">Register</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>

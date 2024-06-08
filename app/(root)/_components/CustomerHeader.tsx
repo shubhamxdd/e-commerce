@@ -19,6 +19,10 @@ export const customerNavLinks = [
     href: "/orders",
   },
   {
+    name: "Cart",
+    href: "/cart",
+  },
+  {
     name: "Contact Us",
     href: "/contact",
   },

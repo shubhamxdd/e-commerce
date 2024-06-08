@@ -6,6 +6,8 @@ import { ImageComp } from "./PerProductImageInsideGrid";
 import { Suspense } from "react";
 import PerPageSkeleton from "./PerPageSkeleton";
 import Link from "next/link";
+import { IoCart } from "react-icons/io5";
+import AddToCartButton from "./AddToCartButton";
 
 interface ProductPageProps {
   fetchFn: () => Promise<Product>;
@@ -73,8 +75,8 @@ const DescComp = ({
           saepe nam.`}
         </p>
       </div>
-      <div className="my-5 group">
-        <Button variant={"outline"} asChild>
+      <div className="my-5 flex gap-4">
+        <Button variant={"outline"} asChild className="group">
           <Link href={`/products/${product.id}/purchase`}>
             Buy Now
             <MdOutlineDoubleArrow
@@ -83,6 +85,7 @@ const DescComp = ({
             />
           </Link>
         </Button>
+        <AddToCartButton product={product} />
       </div>
     </div>
   );
