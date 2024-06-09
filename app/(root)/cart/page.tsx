@@ -1,5 +1,6 @@
 import React from "react";
 import CartPage from "./CartPage";
+import { Metadata } from "next";
 
 const Cart = () => {
   return (
@@ -11,3 +12,8 @@ const Cart = () => {
 };
 
 export default Cart;
+
+export const metadata: Metadata = {
+  title: "Cart 🛒",
+  description: "Here are the items in your cart.",
+};
