@@ -9,6 +9,7 @@ import {
 import { Contact } from "@prisma/client";
 import UpdateStatusButton from "./UpdateStatusButton";
 import SendMail from "./SendMail";
+import DeleteQuery from "./DeleteQuery";
 
 interface AdminContactCardProps {
   query: Contact;
@@ -27,6 +28,7 @@ const AdminContactCard = ({ query }: AdminContactCardProps) => {
       <CardFooter className="flex gap-2">
         <SendMail />
         <UpdateStatusButton id={query.id} />
+        <DeleteQuery queryId={query.id} />
       </CardFooter>
     </Card>
   );

@@ -69,3 +69,26 @@ export const getQueries = async () => {
     throw new Error("Error fetching queries");
   }
 };
+
+export const deleteQuery = async (id: string) => {
+  try {
+    const query = await prisma.contact.findFirst({
+      where: {
+        id,
+      },
+    });
+
+    if (!query) throw new Error("Query not found");
+
+    const deletedQuery = await prisma.contact.delete({
+      where: {
+        id,
+      },
+    });
+
+    return deleteQuery;
+  } catch (error) {
+    console.log(error);
+    throw new Error("Error deleting query");
+  }
+};
