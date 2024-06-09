@@ -41,17 +41,23 @@ const ProductCard = ({ product }: ProductCard) => {
           </div>
         </CardTitle>
         <CardDescription>
-          {/* <div className="flex gap-2 my-2">
-            <p className="text-[14px] font-semibold rounded-full line-clamp-1 bg-purple-500/10 px-4 py-1 text-purple-700 capitalize">
-              {"Tag 1"}
-            </p>
-            <p className="text-[14px] font-semibold rounded-full line-clamp-1 bg-green-500/10 px-4 py-1 text-green-700 capitalize">
-              {"Tag 2"}
-            </p>
-            <p className="text-[14px] font-semibold rounded-full line-clamp-1 bg-sky-500/10 px-4 py-1 text-sky-700 capitalize">
-              {"Tag 3"}
-            </p>
-          </div> */}
+          <div className="flex gap-2 my-2">
+            {product.tag1 && (
+              <p className="text-[14px] font-semibold rounded-full line-clamp-1 bg-purple-500/10 px-4 py-1 text-purple-700 capitalize">
+                {product?.tag1}
+              </p>
+            )}
+            {product.tag2 && (
+              <p className="text-[14px] font-semibold rounded-full line-clamp-1 bg-green-500/10 px-4 py-1 text-green-700 capitalize">
+                {product?.tag2}
+              </p>
+            )}
+            {product.tag3 && (
+              <p className="text-[14px] font-semibold rounded-full line-clamp-1 bg-sky-500/10 px-4 py-1 text-sky-700 capitalize">
+                {product?.tag3}
+              </p>
+            )}
+          </div>
           <Link href={`/products/${product.id}`}>
             <h2 className="my-1 text-xl font-semibold capitalize text-primary">
               {product.name}

@@ -16,6 +16,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import ImageLink from "./_components/ImageLink";
 import RemoveItemFromCart from "./_components/RemoveItemFromCart";
+import toast from "react-hot-toast";
 
 const CartPage = () => {
   const { cart, clearCart, removeFromCart } = cartStore();
@@ -95,7 +96,9 @@ const CartPage = () => {
             <Button variant={"destructive"} onClick={clearCart}>
               Clear cart
             </Button>
-            <Button>Checkout</Button>
+            <Button onClick={() => toast.error("Will be implemented soon")}>
+              Checkout
+            </Button>
           </>
         )}
       </div>

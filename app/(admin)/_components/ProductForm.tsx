@@ -59,6 +59,35 @@ const ProductForm = ({ product }: ProductFormProps) => {
           <p className="text-red-500">{error?.description}</p>
         )}
       </div>
+
+      <div className="flex flex-col gap-3">
+        <Label htmlFor="tag1">Tag 1</Label>
+        <Input
+          name="tag1"
+          id="tag1"
+          required
+          defaultValue={product?.tag1 || ""}
+        />
+      </div>
+      <div className="flex flex-col gap-3">
+        <Label htmlFor="tag2">Tag 2</Label>
+        <Input
+          name="tag2"
+          id="tag2"
+          required
+          defaultValue={product?.tag2 || ""}
+        />
+      </div>
+      <div className="flex flex-col gap-3">
+        <Label htmlFor="tag1">Tag 3</Label>
+        <Input
+          name="tag3"
+          id="tag3"
+          required
+          defaultValue={product?.tag3 || ""}
+        />
+      </div>
+
       <div className="flex flex-col gap-3">
         {/* {product?.id && (
           <> */}
