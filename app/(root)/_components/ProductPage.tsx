@@ -48,7 +48,7 @@ const DescComp = ({
       </div>
       <div className="mt-2">
         <p className="capitalize text-[16px]">{product.description}</p>
-        <p className="text-[14px]">
+        {/* <p className="text-[14px]">
           {`Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio enim
           officiis adipisci sapiente laudantium veniam nobis natus alias ipsum
           facilis hic aperiam, blanditiis nesciunt commodi itaque. Quibusdam,
@@ -73,7 +73,7 @@ const DescComp = ({
           exercitationem commodi magni esse consequatur blanditiis explicabo
           facilis debitis porro, repellat, iure, neque dolor? Nulla voluptates
           saepe nam.`}
-        </p>
+        </p> */}
       </div>
       <div className="my-5 flex gap-4">
         <Button variant={"outline"} asChild className="group">
