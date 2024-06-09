@@ -16,6 +16,14 @@ const ProductGrid = ({ products }: ProductGridProps) => {
 
   // TODO pagination and fix search accordingly then AND implement more filters
 
+  const filteredProducts = products
+    .filter((product) =>
+      product.name.toLowerCase().includes(searchQuery.toLowerCase())
+    )
+    .sort((a, b) =>
+      sortOrder === "asc" ? a.price - b.price : b.price - a.price
+    );
+
   return (
     <>
       <div className="">
@@ -35,17 +43,13 @@ const ProductGrid = ({ products }: ProductGridProps) => {
         </div>
       </div>
       <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 place-items-center my-4">
-        {products
-          .filter((product) =>
-            product.name.toLowerCase().includes(searchQuery.toLowerCase())
-          )
-          .sort((a, b) =>
-            sortOrder === "asc" ? a.price - b.price : b.price - a.price
-          )
-
-          .map((product) => (
+        {filteredProducts.length > 0 ? (
+          filteredProducts.map((product) => (
             <ProductCard product={product} key={product.id} />
-          ))}
+          ))
+        ) : (
+          <p className="text-2xl font-semibold">Nothing found!</p>
+        )}
       </div>
     </>
   );
