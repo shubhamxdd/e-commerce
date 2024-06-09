@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# E-Commerce Platform
 
-## Getting Started
+![Project Image](project_image.png)
 
-First, run the development server:
+![Project Image](admin_image.png)
+
+
+## Description
+
+This project is an e-commerce platform built using Next.js, TypeScript, and MongoDB. It provides a seamless shopping experience for users along with a admin dashboard for efficient management of products, orders, users, and contacts.
+
+## Features
+
+- **Admin Dashboard**: Manage products, orders, users, and contacts efficiently.
+- **User Authentication**: Secure login and registration using NextAuth.
+- **Payment Integration**: Payments are processed via Stripe.
+- **Email Notifications**: Automated emails sent using Nodemailer.
+- **Image Upload**: Images uploaded using Cloudinary.
+
+## Tech Stack
+
+- **Frontend**: Next.js, TypeScript, TailwindCSS, Shadcn UI
+- **Backend**: Node.js, Prisma, NextAuth, Nodemailer
+- **Database**: MongoDB
+- **Other Libraries**: Zustand, react-email
+
+## Installation
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/yourusername/e-commerce.git
+```
+
+2. Install dependencies:
+
+```bash
+cd e-commerce
+npm install
+```
+
+3. Create a `.env.local` file in the root directory and add the following environment variables:
+
+```bash
+cp .env.sample .env.local
+```
+
+4. Start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+5. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Contact
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+For inquiries or feedback, feel free to reach out:
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Email: shubhamsisodia84@gmail.com
