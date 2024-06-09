@@ -2,19 +2,28 @@
 
 import { Product } from "@prisma/client";
 import ProductCard from "../../_components/ProductCard";
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { useRouter, useSearchParams } from "next/navigation";
 
 interface ProductGridProps {
   products: Product[];
 }
 
 const ProductGrid = ({ products }: ProductGridProps) => {
-  const [searchQuery, setSearchQuery] = useState("");
+  const params = useSearchParams();
+  console.log(params.get("query"));
+
+  const [searchQuery, setSearchQuery] = useState(params.get("query") || "");
   const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc");
 
-  // TODO pagination and fix search accordingly then AND implement more filters
+  const router = useRouter();
+
+  const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(e.target.value);
+    router.push(`/products?query=${searchQuery}`);
+  };
 
   const filteredProducts = products
     .filter((product) =>
@@ -30,7 +39,8 @@ const ProductGrid = ({ products }: ProductGridProps) => {
         <Input
           placeholder="Search products..."
           value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
+          onChange={handleSearchChange}
+          // onChange={(e) => setSearchQuery(e.target.value)}
         />
         <div className="my-3">
           <Button
