@@ -39,7 +39,7 @@ const CartPage = () => {
           {cart.length === 0 ? (
             <h1>No items in cart!</h1>
           ) : (
-            cartArr.map((item, indxex) => (
+            cartArr.map((item, index) => (
               <TableRow>
                 <TableCell>
                   <ImageLink item={item} />
