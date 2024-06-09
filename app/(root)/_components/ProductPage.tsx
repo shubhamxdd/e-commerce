@@ -6,7 +6,6 @@ import { ImageComp } from "./PerProductImageInsideGrid";
 import { Suspense } from "react";
 import PerPageSkeleton from "./PerPageSkeleton";
 import Link from "next/link";
-import { IoCart } from "react-icons/io5";
 import AddToCartButton from "./AddToCartButton";
 
 interface ProductPageProps {
@@ -40,6 +39,23 @@ const DescComp = ({
 }) => {
   return (
     <div className="main col-span-1 sm:col-span-6 md:col-span-6 mx-4">
+      <div className="flex gap-2 my-2">
+        {product.tag1 && (
+          <p className="text-[14px] font-semibold rounded-full line-clamp-1 bg-purple-500/10 px-4 py-1 text-purple-700 capitalize">
+            {product?.tag1}
+          </p>
+        )}
+        {product.tag2 && (
+          <p className="text-[14px] font-semibold rounded-full line-clamp-1 bg-green-500/10 px-4 py-1 text-green-700 capitalize">
+            {product?.tag2}
+          </p>
+        )}
+        {product.tag3 && (
+          <p className="text-[14px] font-semibold rounded-full line-clamp-1 bg-sky-500/10 px-4 py-1 text-sky-700 capitalize">
+            {product?.tag3}
+          </p>
+        )}
+      </div>
       <div className="sticky top-[54px] dark:bg-slate-950 bg-white pt-2 pb-2">
         <h1 className="text-2xl font-bold">{product.name}</h1>
         <div className="text-lg font-semibold mt-2">
