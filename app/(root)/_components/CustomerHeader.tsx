@@ -4,6 +4,7 @@ import { ModeToggle } from "@/components/ModeToggle";
 import CustomerMobileNav from "./CustomerMobileNav";
 import CustomerNavLinkAdmin from "@/components/CustomerNavLinkAdmin";
 import LoginLogout from "./LoginLogout";
+import { FiShoppingCart } from "react-icons/fi";
 
 export const customerNavLinks = [
   {
@@ -30,8 +31,10 @@ export const customerNavLinks = [
 const CustomerHeader = () => {
   return (
     <div className="w-full backdrop-blur-3xl  p-2 flex items-center justify-between md:px-20 px-6 lg:px-40 sticky top-0 z-[11]">
-      <h1 className="text-[20px] md:text-[22px] font-semibold my-1">
-        <Link href={"/"}>LogoHere</Link>
+      <h1 className="text-[20px] md:text-[22px] font-semibold my-1 group">
+        <Link href={"/"}>
+          E-Store <FiShoppingCart size={26} className="inline mr-2 group-hover:translate-x-2 duration-300 transition-all" />
+        </Link>
       </h1>
       <ul className="md:flex gap-2 hidden">
         {customerNavLinks.map((link) => (
