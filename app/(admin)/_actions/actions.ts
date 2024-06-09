@@ -170,6 +170,9 @@ const editSchema = z.object({
   price: z.coerce.number().min(1),
   description: z.string().min(2),
   image: z.string().url(),
+  tag1: z.string().min(1),
+  tag2: z.string().min(1),
+  tag3: z.string().min(1),
 });
 
 export const updateProduct = async (
@@ -206,6 +209,9 @@ export const updateProduct = async (
       price: data.price,
       description: data.description,
       image: data.image,
+      tag1: data.tag1,
+      tag2: data.tag2 || "",
+      tag3: data.tag3 || "",
     },
   });
 
