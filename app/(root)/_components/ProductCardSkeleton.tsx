@@ -21,7 +21,7 @@ const ProductCardSkeleton = () => {
           </div>
         </div>
         <div className="my-2">
-          <p className="flex flex-col gap-2">
+          <p className="flex flex-col gap-1">
             <Skeleton className="h-2 w-72 my-2" />
             <Skeleton className="h-2 w-64 my-2" />
             <Skeleton className="h-2 w-80 my-2" />
@@ -29,6 +29,9 @@ const ProductCardSkeleton = () => {
           <p className="my-2 mt-3 ">
             <Skeleton className="h-6 w-24" />
           </p>
+        </div>
+        <div>
+          <Skeleton className=" w-full h-8 mb-5" />
         </div>
         <div>
           <div className="flex gap-2 w-full">

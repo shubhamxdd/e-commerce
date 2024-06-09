@@ -21,6 +21,7 @@ interface HomePageProductsProps {
 
 const HomePageProducts = async ({ title, fetchFn }: HomePageProductsProps) => {
   const products = await fetchFn();
+
   return (
     <div className="space-y-4 my-4">
       <div className="flex gap-4 my-5 max-md:flex-row max-md:justify-center max-md:items-center justify-between">
@@ -36,9 +37,13 @@ const HomePageProducts = async ({ title, fetchFn }: HomePageProductsProps) => {
         </Button>
       </div>
       <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 place-items-center my-4">
-        {products.map((product) => (
-          <ProductCard product={product} key={product.id} />
-        ))}
+        {products.length === 0 ? (
+          <p>No products!</p>
+        ) : (
+          products.map((product) => (
+            <ProductCard product={product} key={product.id} />
+          ))
+        )}
       </div>
     </div>
   );

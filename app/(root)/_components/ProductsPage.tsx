@@ -22,7 +22,11 @@ const ProductsPageComp = async ({ fetchFn }: ProductsPageProps) => {
       <div className="flex gap-4 max-md:flex-row max-md:justify-center max-md:items-center">
         <h2 className="max-sm:text-2xl text-3xl font-bold">All Products🐼</h2>
       </div>
-      <ProductGrid products={products} />
+      {products.length === 0 ? (
+        <p>No products!</p>
+      ) : (
+        <ProductGrid products={products} />
+      )}
     </div>
   );
 };
