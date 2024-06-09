@@ -29,6 +29,8 @@ import { loadStripe } from "@stripe/stripe-js";
 import Image from "next/image";
 import { FormEvent, useState } from "react";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import CardDetailsModal from "./CardDetailsModal";
+import Link from "next/link";
 
 interface CheckoutFormProps {
   product: Product;
@@ -84,7 +86,13 @@ const CheckoutForm = ({ product, clientSecret }: CheckoutFormProps) => {
           <h3 className="text-2xl font-semibold capitalize">{product.name}</h3>
           <p className="text-lg">{formatCurrency(product.price)}</p>
           <p className="text-sm line-clamp-4">{product.description}</p>
-          <div className="max-md:w-[400px] md:w-[600px]">
+          <Button variant={"link"}>
+            <Link href={`/products/${product.id}`}>
+              Go to product page to read more{" "}
+            </Link>
+          </Button>
+          <CardDetailsModal />
+          <div className="lg:w-[600px] xl:w-[800px]">
             <Elements
               options={{
                 clientSecret,
