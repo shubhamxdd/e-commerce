@@ -44,7 +44,7 @@ const ProductDropdown = ({ product }: ProductDropdownProps) => {
       </DropdownMenuTrigger>
       <DropdownMenuContent>
         <DropdownMenuItem asChild>
-          <Link href={`/admin/products/${product.id}/edit`}>Edit</Link>
+          <Link href={`/admin/products/${product.id}/edit`} prefetch={false}>Edit</Link>
         </DropdownMenuItem>
 
         {/* change availability  */}

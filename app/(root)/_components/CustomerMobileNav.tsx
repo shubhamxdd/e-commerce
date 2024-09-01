@@ -17,7 +17,7 @@ const CustomerMobileNav = () => {
         </SheetTrigger>
         <SheetContent className="flex flex-col gap-3 md:hidden">
           <p className="px-4 text-[20px] md:text-[22px] font-bold">
-            E-Store{" "}
+            NextBuy{" "}
             <FiShoppingCart
               size={26}
               className="inline mr-2 group-hover:translate-x-2 duration-300 transition-all"
