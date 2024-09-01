@@ -27,8 +27,8 @@ export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | Ecom",
-    default: "Ecom",
+    template: "%s | NextBuy",
+    default: "NextBuy",
   },
-  description: "Admin dashboard",
+  description: "Home page",
 };

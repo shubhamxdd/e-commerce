@@ -31,6 +31,6 @@ const RootPage = async () => {
 export default RootPage;
 
 export const metadata: Metadata = {
-  title: "Home | Ecom",
+  title: "Home | NextBuy",
   description: "Homepage",
 };
