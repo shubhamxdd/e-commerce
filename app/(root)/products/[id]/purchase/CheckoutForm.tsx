@@ -138,6 +138,17 @@ const Form = ({ price }: { price: number }) => {
         elements,
         confirmParams: {
           return_url: `${process.env.NEXT_PUBLIC_SERVER_URL}/stripe/success`,
+          payment_method_data: {
+        billing_details: {
+        name: "customerName",
+        address: {
+          line1: "addressLine1",
+          city: "city",
+          postal_code: "postalCode",
+          country: "country",
+        },
+      },
+    },
         },
       })
       .then((error) => {
